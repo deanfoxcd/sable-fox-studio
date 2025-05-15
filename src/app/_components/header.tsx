@@ -2,10 +2,8 @@ import '../globals.css';
 
 const Header: React.FC = function () {
   return (
-    <div>
-      <h1 className='text-4xl flex items-center justify-center m-10 font-cormorant'>
-        Sable Fox Studio
-      </h1>
+    <div className='relative flex items-center justify-center'>
+      <h1 className='text-4xl font-cormorant m-10'>Sable Fox Studio</h1>
     </div>
   );
 };
