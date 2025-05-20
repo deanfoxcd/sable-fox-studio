@@ -34,7 +34,7 @@ export const customTheme = createTheme({
 
   navbar: {
     root: {
-      base: 'bg-white px-2 py-2.5 sm:px-4 dark:border-gray-700 dark:bg-gray-800 flex',
+      base: '!bg-transparent px-2 py-2.5 sm:px-4 dark:border-gray-70 flex',
       rounded: {
         on: 'rounded',
         off: '',
@@ -63,9 +63,9 @@ export const customTheme = createTheme({
       },
     },
     link: {
-      base: 'block py-2 pl-3 pr-4 md:p-0',
+      base: 'block py-2 pl-3 pr-4 md:p-0 !text-white',
       active: {
-        on: 'bg-primary-700 text-white md:bg-transparent md:text-primary-700 dark:text-white',
+        on: ' text-white font-bold text-xl md:bg-transparent dark:text-white',
         off: 'border-b border-gray-100 text-gray-700 hover:bg-gray-50 md:border-0 md:hover:bg-transparent md:hover:text-primary-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-white',
       },
       disabled: {

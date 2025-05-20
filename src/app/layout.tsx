@@ -3,8 +3,9 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import Header from './_components/header';
 import Navbar from './_components/navbar';
-import Footer from './_components/footer';
+import { FooterComponent } from './_components/footer';
 import { ThemeModeScript } from 'flowbite-react';
+import BackgroundImage from './_components/backgroundImg';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -37,10 +38,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <BackgroundImage />
         <Header />
         <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <main className='mt-12'>{children}</main>
+        <FooterComponent />
       </body>
     </html>
   );
