@@ -62,7 +62,6 @@ const NavbarComponent: React.FC = function () {
           </NavbarLink>
         </NavbarCollapse>
       </Navbar>
-      <p className='absolute right-8'>Socials</p>
     </div>
 
     // <div>

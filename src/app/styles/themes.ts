@@ -19,7 +19,7 @@ export const customTheme = createTheme({
       default:
         'bg-primary-700 text-white hover:bg-primary-800 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800',
       alternative:
-        'border border-[var(--main-brown)] bg-gray-300 text-gray-600 hover:cursor-pointer hover:bg-gray-200 hover:text-[#3E4825] hover:ring-1 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700',
+        'border !border-[var(--main-brown)] !bg-gray-300 !text-gray-600 hover:cursor-pointer hover:bg-gray-200 hover:text-[#3E4825] hover:ring-1 focus:ring-gray-100',
       dark: 'bg-gray-800 text-white hover:bg-gray-900 focus:ring-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700',
       light:
         'border border-gray-300 bg-white text-gray-900 hover:bg-gray-100 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700',
