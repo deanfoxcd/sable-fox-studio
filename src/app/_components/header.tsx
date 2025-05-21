@@ -3,7 +3,7 @@ import '../globals.css';
 const Header: React.FC = function () {
   return (
     <div className='relative flex items-center justify-center'>
-      <h1 className='font-cormorant text-white text-5xl'>Sable Fox Studio</h1>
+      <h1 className='font-cormorant text-white !text-5xl'>Sable Fox Studio</h1>
     </div>
   );
 };
