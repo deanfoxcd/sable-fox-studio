@@ -31,7 +31,7 @@ export default function ScrollToJoinSection() {
   return (
     <>
       <section className='min-h-screen flex flex-col items-center bg-transparent pt-45'>
-        <div className='text-white text-center px-4'>
+        <div className='text-white px-4'>
           <h1 className='tracking-tight leading-none'>
             <em>
               nostalgic fine art that honors the beauty of nature in heirloom
