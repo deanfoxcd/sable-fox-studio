@@ -1,7 +1,8 @@
+import { login } from '@/app/_lib/actions';
 import { Button } from 'flowbite-react';
 import { customTheme } from '../styles/themes';
 
-const Admin: React.FC = function () {
+const Login: React.FC = function () {
   const inputStyle =
     'bg-white text-black p-3 border-1 border-[var(--main-brown)] rounded-lg focus:border-2 focus:border-[var(--main-brown)] focus:ring-1 focus:ring-[var(--main-brown)] outline-none';
 
@@ -58,6 +59,8 @@ const Admin: React.FC = function () {
                   color='alternative'
                   pill
                   className='w-full !text-llg'
+                  formAction={login}
+                  type='submit'
                 >
                   Sign In
                 </Button>
@@ -70,4 +73,4 @@ const Admin: React.FC = function () {
   );
 };
 
-export default Admin;
+export default Login;
