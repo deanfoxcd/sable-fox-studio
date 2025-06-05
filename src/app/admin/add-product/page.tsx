@@ -1,9 +1,9 @@
 'use client';
 
 import { Button } from 'flowbite-react';
-import { customTheme } from '../styles/themes';
-import { Product } from '../types';
-import { addProduct } from '../_lib/actions';
+import { customTheme } from '@/app/styles/themes';
+import { Product } from '@/app/types';
+import { addProduct } from '@/app/_lib/actions';
 import { useState } from 'react';
 
 const AddProduct: React.FC = function () {

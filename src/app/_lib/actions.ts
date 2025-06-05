@@ -54,8 +54,8 @@ export async function addProduct(product: Product) {
     redirect('/error');
   }
 
-  revalidatePath('/products');
-  redirect('/products');
+  revalidatePath('/admin/products');
+  redirect('/admin/products');
 }
 
 export async function getProducts() {

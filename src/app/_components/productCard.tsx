@@ -1,7 +1,6 @@
-import { Button, Card } from 'flowbite-react';
+import { Card } from 'flowbite-react';
 import { Product } from '../types';
-import ButtonServer from './buttonServer';
-import { redirect } from 'next/navigation';
+import ButtonProducts from './buttonProducts';
 
 interface ProductsCardProps {
   product: Product;
@@ -9,14 +8,9 @@ interface ProductsCardProps {
 }
 
 const ProductCard: React.FC<ProductsCardProps> = function ({ product, admin }) {
-  const handleClick = () => {
-    if (admin) redirect(`/admin/edit-product/${product.id}`);
-    else return;
-  };
-
   return (
     <Card
-      className='max-w-sm'
+      className='w-100'
       imgAlt={product.name}
       imgSrc='/images/products/apple-watch.png'
     >
@@ -36,18 +30,12 @@ const ProductCard: React.FC<ProductsCardProps> = function ({ product, admin }) {
         <span className='text-3xl font-bold text-gray-900 dark:text-white'>
           ${product.price}
         </span>
-        {/* <Button
-          color='alternative'
-          pill
-        >
-          {admin ? 'Edit product' : 'Add to cart'}
-        </Button> */}
-        <ButtonServer
+        <ButtonProducts
           admin={admin}
           productId={product.id}
         >
           {admin ? 'Edit product' : 'Add to cart'}
-        </ButtonServer>
+        </ButtonProducts>
       </div>
     </Card>
   );

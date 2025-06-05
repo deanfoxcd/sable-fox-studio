@@ -2,6 +2,7 @@
 
 import { Button } from 'flowbite-react';
 import { useRouter } from 'next/navigation';
+import { customTheme } from '../styles/themes';
 
 interface ButtonProps {
   children: string;
@@ -9,7 +10,7 @@ interface ButtonProps {
   productId: string | undefined;
 }
 
-const ButtonServer: React.FC<ButtonProps> = function ({
+const ButtonProducts: React.FC<ButtonProps> = function ({
   children,
   admin,
   productId,
@@ -25,6 +26,7 @@ const ButtonServer: React.FC<ButtonProps> = function ({
     <Button
       color='alternative'
       pill
+      theme={customTheme.button}
       onClick={handleClick}
     >
       {children}
@@ -32,4 +34,4 @@ const ButtonServer: React.FC<ButtonProps> = function ({
   );
 };
 
-export default ButtonServer;
+export default ButtonProducts;

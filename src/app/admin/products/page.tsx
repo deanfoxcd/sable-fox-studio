@@ -4,6 +4,9 @@ import { createClient } from '@/app/utils/supabase/server';
 import { getProducts } from '@/app/_lib/actions';
 import ProductCard from '@/app/_components/productCard';
 import { Product } from '@/app/types';
+import { Button } from 'flowbite-react';
+import { customTheme } from '@/app/styles/themes';
+import AddProductButton from '@/app/_components/buttonAddProduct';
 
 export default async function PrivateProductsPage() {
   const supabase = await createClient();
@@ -20,7 +23,7 @@ export default async function PrivateProductsPage() {
     <div className='text-white'>
       <div className='font-bold text-xl md:bg-transparent m-4'>PRODUCTS</div>
 
-      <ul>
+      <ul className='flex'>
         {products?.map((product: Product) => {
           return (
             // <li
@@ -32,14 +35,22 @@ export default async function PrivateProductsPage() {
             //   <p>{product.description}</p>
             //   <hr className='mt-4' />
             // </li>
-            <ProductCard
+            <div
               key={product.id}
-              product={product}
-              admin={true}
-            />
+              className='p-2'
+            >
+              <ProductCard
+                product={product}
+                admin={true}
+              />
+            </div>
           );
         })}
       </ul>
+
+      <div>
+        <AddProductButton />
+      </div>
     </div>
   );
 }
