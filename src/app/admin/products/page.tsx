@@ -23,7 +23,7 @@ export default async function PrivateProductsPage() {
     <div className='text-white'>
       <div className='font-bold text-xl md:bg-transparent m-4'>PRODUCTS</div>
 
-      <ul className='flex'>
+      <ul className='flex flex-wrap'>
         {products?.map((product: Product) => {
           return (
             // <li
