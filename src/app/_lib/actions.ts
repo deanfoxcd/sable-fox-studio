@@ -48,13 +48,12 @@ export async function signup(formData: FormData) {
 }
 
 export async function addProduct(product: Product) {
-  const newProduct = product;
-
-  const { error } = await supabase.from('products').insert([newProduct]);
+  const { error } = await supabase.from('products').insert([product]);
 
   if (error) {
     redirect('/error');
   }
 
   revalidatePath('/products');
+  redirect('/products');
 }

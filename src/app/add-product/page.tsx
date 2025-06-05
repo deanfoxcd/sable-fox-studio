@@ -1,11 +1,32 @@
+'use client';
+
+import { Button } from 'flowbite-react';
+import { customTheme } from '../styles/themes';
+import { Product } from '../types';
+import { addProduct } from '../_lib/actions';
+import { useState } from 'react';
+
 const AddProduct: React.FC = function () {
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState(0);
+  const [description, setDescription] = useState('');
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const product: Product = { name, price, description };
+    addProduct(product);
+  };
+
   return (
     <section className='bg-white dark:bg-gray-900'>
       <div className='py-8 px-4 mx-auto max-w-2xl lg:py-16'>
         <h2 className='mb-4 text-xl font-bold text-gray-900 dark:text-white'>
           Add a new product
         </h2>
-        <form action='#'>
+        <form
+          action='#'
+          onSubmit={handleSubmit}
+        >
           <div className='grid gap-4 sm:grid-cols-2 sm:gap-6'>
             <div className='sm:col-span-2'>
               <label
@@ -15,6 +36,8 @@ const AddProduct: React.FC = function () {
                 Product Name
               </label>
               <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 type='text'
                 name='name'
                 id='name'
@@ -32,6 +55,8 @@ const AddProduct: React.FC = function () {
                 Price
               </label>
               <input
+                value={price}
+                onChange={(e) => setPrice(Number(e.target.value))}
                 type='number'
                 name='price'
                 id='price'
@@ -49,6 +74,8 @@ const AddProduct: React.FC = function () {
                 Description
               </label>
               <textarea
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 id='description'
                 rows={8}
                 className='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
@@ -56,12 +83,15 @@ const AddProduct: React.FC = function () {
               ></textarea>
             </div>
           </div>
-          <button
+          <Button
+            theme={customTheme.button}
+            color='alternative'
+            pill
             type='submit'
-            className='inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800'
+            className='!mt-4'
           >
             Add product
-          </button>
+          </Button>
         </form>
       </div>
     </section>
