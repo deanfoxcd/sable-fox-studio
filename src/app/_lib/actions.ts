@@ -57,3 +57,11 @@ export async function addProduct(product: Product) {
   revalidatePath('/products');
   redirect('/products');
 }
+
+export async function getProducts() {
+  const { data: products, error } = await supabase.from('products').select('*');
+
+  if (error) console.log(error);
+
+  return products;
+}
