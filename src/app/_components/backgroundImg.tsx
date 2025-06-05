@@ -7,6 +7,7 @@ const backgroundMap: Record<string, string> = {
   '/about': '',
   '/commissions': '/images/commissions-bg.jpeg',
   '/login': '/images/commissions-bg.jpeg',
+  '/products': '/images/black.jpg',
 };
 
 export default function BackgroundImage() {

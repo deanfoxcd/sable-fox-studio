@@ -4,6 +4,8 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 import { createClient } from '@/app/utils/supabase/server';
+import { supabase } from '../utils/supabase/client';
+import { Product } from '../types';
 
 export async function login(formData: FormData) {
   const supabase = await createClient();
@@ -43,4 +45,16 @@ export async function signup(formData: FormData) {
 
   revalidatePath('/', 'layout');
   redirect('/');
+}
+
+export async function addProduct(product: Product) {
+  const newProduct = product;
+
+  const { error } = await supabase.from('products').insert([newProduct]);
+
+  if (error) {
+    redirect('/error');
+  }
+
+  revalidatePath('/products');
 }

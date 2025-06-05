@@ -3,7 +3,7 @@ import ScrollToJoinSection from './_components/ScrollToJoinSection';
 
 export default function Home() {
   return (
-    <div className='text-xl items-center justify-items-center min-h-screen font-cormorant'>
+    <div className='text-xl items-center justify-items-center font-cormorant'>
       <ScrollToJoinSection />
     </div>
   );

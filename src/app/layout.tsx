@@ -25,13 +25,13 @@ export default function RootLayout({
       <head>
         <ThemeModeScript />
       </head>
-      <body className='antialiased'>
+      <body className='antialiase min-h-screen flex flex-col'>
         <div>
           <BackgroundImage />
           <Header />
           <Navbar />
         </div>
-        <main>{children}</main>
+        <main className='flex-1'>{children}</main>
         <FooterComponent />
       </body>
     </html>

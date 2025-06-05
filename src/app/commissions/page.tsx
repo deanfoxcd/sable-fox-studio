@@ -1,5 +1,12 @@
+import BackgroundImage from '../_components/backgroundImg';
+
 const page: React.FC = function () {
-  return <div>COMMISSIONS</div>;
+  return (
+    <>
+      <BackgroundImage bg='/images/commissions-bg.jpeg' />
+      <div>COMMISSIONS</div>;
+    </>
+  );
 };
 
 export default page;
