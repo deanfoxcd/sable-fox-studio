@@ -23,8 +23,8 @@ export async function login(formData: FormData) {
     redirect('/error');
   }
 
-  revalidatePath('/', 'layout');
-  redirect('/products');
+  revalidatePath('/admin/products', 'layout');
+  redirect('/admin/products');
 }
 
 export async function signup(formData: FormData) {
