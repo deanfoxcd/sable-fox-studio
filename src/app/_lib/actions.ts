@@ -65,3 +65,14 @@ export async function getProducts() {
 
   return products;
 }
+
+export async function getProductById(id: number) {
+  const { data: product, error } = await supabase
+    .from('products')
+    .select('*')
+    .eq('id', id);
+
+  if (error) console.log(error);
+
+  return product;
+}

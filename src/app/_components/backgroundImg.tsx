@@ -8,6 +8,8 @@ const backgroundMap: Record<string, string> = {
   '/commissions': '/images/commissions-bg.jpeg',
   '/login': '/images/commissions-bg.jpeg',
   '/products': '/images/black.jpg',
+  '/admin/products': '/images/black.jpg',
+  '/admin/edit-product/*': '/images/black.jpg',
 };
 
 export default function BackgroundImage() {

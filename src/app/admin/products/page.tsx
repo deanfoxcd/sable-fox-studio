@@ -1,12 +1,10 @@
 import { redirect } from 'next/navigation';
 
-import { createClient } from '@/app/utils/supabase/server';
-import { getProducts } from '@/app/_lib/actions';
-import ProductCard from '@/app/_components/productCard';
-import { Product } from '@/app/types';
-import { Button } from 'flowbite-react';
-import { customTheme } from '@/app/styles/themes';
 import AddProductButton from '@/app/_components/buttonAddProduct';
+import ProductsListWithModal from '@/app/_components/productsListWithModal';
+import { getProducts } from '@/app/_lib/actions';
+import { Product } from '@/app/types';
+import { createClient } from '@/app/utils/supabase/server';
 
 export default async function PrivateProductsPage() {
   const supabase = await createClient();
@@ -16,37 +14,13 @@ export default async function PrivateProductsPage() {
     redirect('/login');
   }
 
-  const products = await getProducts();
-  console.log(products);
+  const products: Product[] | null = await getProducts();
 
   return (
     <div className='text-white'>
       <div className='font-bold text-xl md:bg-transparent m-4'>PRODUCTS</div>
 
-      <ul className='flex flex-wrap'>
-        {products?.map((product: Product) => {
-          return (
-            // <li
-            //   key={product.id}
-            //   className='m-4'
-            // >
-            //   <p className='font-bold text-xl mb-2'>{product.name}</p>
-            //   <p className='mb-2'>${product.price}</p>
-            //   <p>{product.description}</p>
-            //   <hr className='mt-4' />
-            // </li>
-            <div
-              key={product.id}
-              className='p-2'
-            >
-              <ProductCard
-                product={product}
-                admin={true}
-              />
-            </div>
-          );
-        })}
-      </ul>
+      <ProductsListWithModal products={products} />
 
       <div>
         <AddProductButton />

@@ -12,7 +12,7 @@ export const customTheme = createTheme({
       xs: 'h-8 px-3 text-xs',
       sm: 'h-9 px-3 text-sm',
       md: 'h-10 px-5 text-sm',
-      lg: 'h-12 px-5 text-base',
+      lg: 'h-12 text-base px-5',
       xl: 'h-[52px] px-6 text-base',
     },
     color: {
