@@ -5,9 +5,14 @@ import ButtonProducts from './buttonProducts';
 interface ProductsCardProps {
   product: Product;
   admin: boolean;
+  onEdit: () => void;
 }
 
-const ProductCard: React.FC<ProductsCardProps> = function ({ product, admin }) {
+const ProductCard: React.FC<ProductsCardProps> = function ({
+  product,
+  admin,
+  onEdit,
+}) {
   return (
     <Card
       className='w-100'
@@ -33,6 +38,7 @@ const ProductCard: React.FC<ProductsCardProps> = function ({ product, admin }) {
         <ButtonProducts
           admin={admin}
           productId={product.id}
+          onEdit={onEdit}
         >
           {admin ? 'Edit product' : 'Add to cart'}
         </ButtonProducts>

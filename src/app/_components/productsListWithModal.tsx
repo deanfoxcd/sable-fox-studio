@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { Product } from '../types';
 import ProductCard from './productCard';
+import { getProductById } from '../_lib/actions';
+import EditProductModal from './EditProductModal';
 
 interface ProductsListWithModalProps {
   products: Product[] | null;
@@ -14,22 +16,39 @@ const ProductsListWithModal: React.FC<ProductsListWithModalProps> = function ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
+  const handleEdit = async (productId: string | undefined) => {
+    if (!productId) return;
+    const product = await getProductById(Number(productId));
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
   return (
-    <ul className='flex flex-wrap'>
-      {products?.map((product: Product) => {
-        return (
-          <div
-            key={product.id}
-            className='p-2'
-          >
-            <ProductCard
-              product={product}
-              admin={true}
-            />
-          </div>
-        );
-      })}
-    </ul>
+    <>
+      {isModalOpen && selectedProduct && (
+        <EditProductModal
+          product={selectedProduct}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
+
+      <ul className='flex flex-wrap'>
+        {products?.map((product: Product) => {
+          return (
+            <div
+              key={product.id}
+              className='p-2'
+            >
+              <ProductCard
+                product={product}
+                admin={true}
+                onEdit={() => handleEdit(product.id)}
+              />
+            </div>
+          );
+        })}
+      </ul>
+    </>
   );
 };
 

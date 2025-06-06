@@ -74,5 +74,5 @@ export async function getProductById(id: number) {
 
   if (error) console.log(error);
 
-  return product;
+  return product?.[0];
 }
