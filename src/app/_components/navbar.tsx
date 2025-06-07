@@ -25,13 +25,15 @@ const NavbarComponent: React.FC = function () {
           >
             Home
           </NavbarLink>
+
           <NavbarLink
             as={Link}
-            href='/about'
-            active={pathname === '/about'}
+            href='/shop'
+            active={pathname === '/shop'}
           >
-            About
+            Shop
           </NavbarLink>
+
           <NavbarLink
             as={Link}
             href='/portfolio'
@@ -39,6 +41,7 @@ const NavbarComponent: React.FC = function () {
           >
             Portfolio
           </NavbarLink>
+
           <NavbarLink
             as={Link}
             href='/commissions'
@@ -46,6 +49,7 @@ const NavbarComponent: React.FC = function () {
           >
             Commission
           </NavbarLink>
+
           <NavbarLink
             as={Link}
             href='/journal'
@@ -53,6 +57,15 @@ const NavbarComponent: React.FC = function () {
           >
             Journal
           </NavbarLink>
+
+          <NavbarLink
+            as={Link}
+            href='/about'
+            active={pathname === '/about'}
+          >
+            About
+          </NavbarLink>
+
           <NavbarLink
             as={Link}
             href='/inquire'
