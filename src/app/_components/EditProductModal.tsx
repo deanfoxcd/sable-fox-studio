@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Product } from '../types';
-import { updateProduct } from '../_lib/actions';
+import { deleteProduct, updateProduct } from '../_lib/actions';
 import { Button } from 'flowbite-react';
 import { customTheme } from '../styles/themes';
 
@@ -34,11 +34,15 @@ const EditProductModal: React.FC<EditproductModalProps> = function ({
     onClose();
   };
 
+  const handleDelete = () => {
+    deleteProduct(Number(product.id));
+    onClose();
+  };
+
   return (
     <div
       id='updateProductModal'
       tabIndex={-1}
-      aria-hidden='true'
       className={`overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full ${isOpen ? 'block' : 'hidden'}`}
     >
       <div className='relative p-4 w-full max-w-2xl h-full md:h-auto'>
@@ -126,6 +130,7 @@ const EditProductModal: React.FC<EditproductModalProps> = function ({
               <Button
                 type='button'
                 className='text-red-600 inline-flex items-center hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900'
+                onClick={handleDelete}
               >
                 Delete
               </Button>

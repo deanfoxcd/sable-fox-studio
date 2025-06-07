@@ -97,3 +97,14 @@ export async function updateProduct(id: number, product: Product) {
   revalidatePath('/admin/products');
   redirect('/admin/products');
 }
+
+export async function deleteProduct(id: number) {
+  const { error } = await supabase.from('products').delete().eq('id', id);
+
+  if (error) {
+    redirect('/error');
+  }
+
+  revalidatePath('/admin/products');
+  redirect('/admin/products');
+}
