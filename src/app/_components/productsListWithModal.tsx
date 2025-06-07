@@ -29,6 +29,7 @@ const ProductsListWithModal: React.FC<ProductsListWithModalProps> = function ({
         <EditProductModal
           product={selectedProduct}
           onClose={() => setIsModalOpen(false)}
+          isOpen={isModalOpen}
         />
       )}
 

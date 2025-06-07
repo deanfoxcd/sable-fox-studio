@@ -76,3 +76,24 @@ export async function getProductById(id: number) {
 
   return product?.[0];
 }
+
+export async function updateProduct(id: number, product: Product) {
+  const { data, error } = await supabase
+    .from('products')
+    .update({
+      name: product.name,
+      price: product.price,
+      description: product.description,
+    })
+    .eq('id', id)
+    .select();
+
+  console.log('Updated product:', data);
+
+  if (error) {
+    redirect('/error');
+  }
+
+  revalidatePath('/admin/products');
+  redirect('/admin/products');
+}
