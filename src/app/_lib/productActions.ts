@@ -1,3 +1,5 @@
+'use server';
+
 import { redirect } from 'next/navigation';
 import { Product } from '../types';
 import { supabase } from '../utils/supabase/client';

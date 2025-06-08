@@ -4,7 +4,7 @@ import { Product } from '../types';
 
 export default async function Products() {
   const products = await getProducts();
-  console.log(products);
+  // console.log(products);
 
   return (
     <div className='text-white min-h-screen'>

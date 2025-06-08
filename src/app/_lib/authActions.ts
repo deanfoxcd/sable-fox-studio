@@ -4,9 +4,6 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 import { createClient } from '@/app/utils/supabase/server';
-import { supabase } from '../utils/supabase/client';
-import { Product } from '../types';
-import { getGuestId } from './guestId';
 
 export async function login(formData: FormData) {
   const supabase = await createClient();

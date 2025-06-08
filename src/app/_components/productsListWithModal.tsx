@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { Product } from '../types';
 import ProductCard from './productCard';
-import { getProductById } from '../_lib/authActions';
 import EditProductModal from './EditProductModal';
+import { getProductById } from '../_lib/productActions';
 
 interface ProductsListWithModalProps {
   products: Product[] | null;

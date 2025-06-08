@@ -1,8 +1,10 @@
 'use client';
 
 import { Button } from 'flowbite-react';
-import { useRouter } from 'next/navigation';
+import { addToCart } from '../_lib/cartActions';
 import { customTheme } from '../styles/themes';
+import { useState } from 'react';
+import { getGuestId } from '../_lib/guestId';
 
 interface ButtonProps {
   children: string;
@@ -17,14 +19,22 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
   productId,
   onEdit,
 }) {
-  const router = useRouter();
+  const [isAdding, setIsAdding] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (admin) {
       if (productId) onEdit?.();
+    } else if (productId) {
+      setIsAdding(true);
+
+      const guestId = getGuestId();
+      console.log(guestId);
+      const newItem = await addToCart(productId);
+
+      if (newItem) console.log('Added to cart:', newItem);
+
+      setIsAdding(false);
     }
-    // if (admin) router.push(`/admin/edit-product/${productId}`);
-    else return;
   };
 
   return (
@@ -33,6 +43,7 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
       pill
       theme={customTheme.button}
       onClick={handleClick}
+      disabled={isAdding}
     >
       {children}
     </Button>

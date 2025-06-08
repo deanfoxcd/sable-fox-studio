@@ -1,3 +1,5 @@
+'use server';
+
 import { supabase } from '../utils/supabase/client';
 import { getGuestId } from './guestId';
 

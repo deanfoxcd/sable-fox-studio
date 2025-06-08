@@ -17,7 +17,7 @@ const ProductCard: React.FC<ProductsCardProps> = function ({
     <Card
       className='w-100'
       imgAlt={product.name}
-      imgSrc='/images/products/apple-watch.png'
+      imgSrc=''
     >
       <a href='#'>
         <h5 className='text-xl font-semibold tracking-tight text-white'>
