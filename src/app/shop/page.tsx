@@ -1,5 +1,6 @@
 import ProductCard from '../_components/productCard';
-import { getProducts } from '../_lib/actions';
+import { getProducts } from '../_lib/productActions';
+import { Product } from '../types';
 
 export default async function Products() {
   const products = await getProducts();
@@ -8,7 +9,7 @@ export default async function Products() {
   return (
     <div className='text-white min-h-screen'>
       <ul className='flex flex-wrap items-center justify-center'>
-        {products?.map((product) => {
+        {products?.map((product: Product) => {
           return (
             <li
               key={product.id}

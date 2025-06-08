@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Product } from '../types';
-import { deleteProduct, updateProduct } from '../_lib/actions';
+import { deleteProduct, updateProduct } from '../_lib/authActions';
 import { Button } from 'flowbite-react';
 import { customTheme } from '../styles/themes';
 

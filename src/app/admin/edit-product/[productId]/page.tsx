@@ -1,4 +1,4 @@
-import { getProductById } from '@/app/_lib/actions';
+import { getProductById } from '@/app/_lib/productActions';
 
 interface EditProductProps {
   params: { productId: string };

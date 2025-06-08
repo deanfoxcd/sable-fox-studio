@@ -3,8 +3,8 @@
 import { Button } from 'flowbite-react';
 import { customTheme } from '@/app/styles/themes';
 import { Product } from '@/app/types';
-import { addProduct } from '@/app/_lib/actions';
 import { useState } from 'react';
+import { addProduct } from '@/app/_lib/productActions';
 
 const AddProduct: React.FC = function () {
   const [name, setName] = useState('');

@@ -1,4 +1,4 @@
-import { login } from '@/app/_lib/actions';
+import { login } from '@/app/_lib/authActions';
 import { Button } from 'flowbite-react';
 import { customTheme } from '../styles/themes';
 

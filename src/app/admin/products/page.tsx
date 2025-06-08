@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation';
 
 import AddProductButton from '@/app/_components/buttonAddProduct';
 import ProductsListWithModal from '@/app/_components/productsListWithModal';
-import { getProducts } from '@/app/_lib/actions';
+import { getProducts } from '@/app/_lib/productActions';
 import { Product } from '@/app/types';
 import { createClient } from '@/app/utils/supabase/server';
 

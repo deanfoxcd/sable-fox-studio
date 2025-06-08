@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Product } from '../types';
 import ProductCard from './productCard';
-import { getProductById } from '../_lib/actions';
+import { getProductById } from '../_lib/authActions';
 import EditProductModal from './EditProductModal';
 
 interface ProductsListWithModalProps {
