@@ -29,7 +29,7 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
 
       const guestId = getGuestId();
       console.log(guestId);
-      const newItem = await addToCart(productId);
+      const newItem = await addToCart(guestId, productId);
 
       if (newItem) console.log('Added to cart:', newItem);
 

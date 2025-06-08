@@ -1,11 +1,10 @@
 'use server';
 
+import { UUIDTypes } from 'uuid';
 import { supabase } from '../utils/supabase/client';
 import { getGuestId } from './guestId';
 
-export async function getCart() {
-  const guestId = getGuestId();
-
+export async function getCart(guestId: UUIDTypes) {
   const { data: cart_items, error } = await supabase
     .from('cart_items')
     .select('*')
@@ -16,9 +15,11 @@ export async function getCart() {
   return cart_items;
 }
 
-export async function addToCart(productId: string, quantity: number = 1) {
-  const guestId = getGuestId();
-
+export async function addToCart(
+  guestId: UUIDTypes,
+  productId: string,
+  quantity: number = 1
+) {
   const { data, error } = await supabase
     .from('cart_items')
     .insert([

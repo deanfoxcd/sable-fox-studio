@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export function getGuestId(): string {
   if (typeof window === 'undefined') {
-    return uuidv4(); // Temporary UUID for server-side, not used for cart
+    throw new Error('getGuestId must be called from the browser');
   }
   let guestId = localStorage.getItem('guest_id');
   if (!guestId) {
