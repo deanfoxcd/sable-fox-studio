@@ -4,10 +4,13 @@ import { usePathname } from 'next/navigation';
 
 const backgroundMap: Record<string, string> = {
   '/': '/images/homepage-bg.jpg',
-  '/about': '',
+  '/shop': '/images/admin-bg.jpeg',
+  '/portfolio': '/images/portfolio.jpeg',
   '/commissions': '/images/commissions-bg.jpeg',
+  '/journal': '/images/journal.jpg',
+  '/about': '/images/about.jpeg',
+  '/cart': '/images/black.jpg',
   '/login': '/images/commissions-bg.jpeg',
-  '/products': '/images/black.jpg',
   '/admin/products': '/images/black.jpg',
   '/admin/edit-product/*': '/images/black.jpg',
 };

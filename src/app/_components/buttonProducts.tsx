@@ -8,7 +8,7 @@ interface ButtonProps {
   children: string;
   admin: boolean;
   productId: string | undefined;
-  onEdit: () => void;
+  onEdit?: () => void;
 }
 
 const ButtonProducts: React.FC<ButtonProps> = function ({
@@ -20,8 +20,10 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
   const router = useRouter();
 
   const handleClick = () => {
+    if (admin) {
+      if (productId) onEdit?.();
+    }
     // if (admin) router.push(`/admin/edit-product/${productId}`);
-    if (admin) onEdit();
     else return;
   };
 

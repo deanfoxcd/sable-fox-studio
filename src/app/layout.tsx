@@ -6,6 +6,7 @@ import Navbar from './_components/navbar';
 import { FooterComponent } from './_components/footer';
 import { ThemeModeScript } from 'flowbite-react';
 import BackgroundImage from './_components/backgroundImg';
+import { BsCartFill } from 'react-icons/bs';
 
 export const metadata: Metadata = {
   title: 'Sable Fox Studio',
@@ -30,6 +31,7 @@ export default function RootLayout({
           <BackgroundImage />
           <Header />
           <Navbar />
+          <BsCartFill />
         </div>
         <main className='flex-1'>{children}</main>
         <FooterComponent />

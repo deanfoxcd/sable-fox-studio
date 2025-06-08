@@ -6,13 +6,14 @@ export default async function Products() {
   console.log(products);
 
   return (
-    <div className='text-white'>
-      <div>PRODUCTS</div>
-
-      <ul>
+    <div className='text-white min-h-screen'>
+      <ul className='flex flex-wrap items-center justify-center'>
         {products?.map((product) => {
           return (
-            <li key={product.id}>
+            <li
+              key={product.id}
+              className='p-6'
+            >
               <ProductCard
                 product={product}
                 admin={false}

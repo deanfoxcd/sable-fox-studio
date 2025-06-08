@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation';
 import { createClient } from '@/app/utils/supabase/server';
 import { supabase } from '../utils/supabase/client';
 import { Product } from '../types';
+import { getGuestId } from './guestId';
 
 export async function login(formData: FormData) {
   const supabase = await createClient();
@@ -107,4 +108,17 @@ export async function deleteProduct(id: number) {
 
   revalidatePath('/admin/products');
   redirect('/admin/products');
+}
+
+export async function getCart() {
+  const guestId = getGuestId();
+
+  const { data: cart_items, error } = await supabase
+    .from('cart_items')
+    .select('*')
+    .eq('guest_id', guestId);
+
+  if (error) console.log(error);
+
+  return cart_items;
 }

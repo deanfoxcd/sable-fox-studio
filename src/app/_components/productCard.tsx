@@ -5,7 +5,7 @@ import ButtonProducts from './buttonProducts';
 interface ProductsCardProps {
   product: Product;
   admin: boolean;
-  onEdit: () => void;
+  onEdit?: () => void;
 }
 
 const ProductCard: React.FC<ProductsCardProps> = function ({

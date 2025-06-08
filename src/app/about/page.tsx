@@ -1,5 +1,5 @@
 const page: React.FC = function () {
-  return <div>ABOUT</div>;
+  return <div className='min-h-screen'>ABOUT</div>;
 };
 
 export default page;

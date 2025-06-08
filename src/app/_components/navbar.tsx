@@ -5,6 +5,7 @@ import { Navbar, NavbarCollapse, NavbarLink } from 'flowbite-react';
 import Link from 'next/link';
 import { customTheme } from '../styles/themes';
 import { usePathname } from 'next/navigation';
+import { BsCartFill } from 'react-icons/bs';
 
 const NavbarComponent: React.FC = function () {
   const pathname = usePathname();
@@ -14,7 +15,6 @@ const NavbarComponent: React.FC = function () {
       <Navbar
         rounded
         fluid
-        // className='flex gap-10'
         theme={customTheme.navbar}
       >
         <NavbarCollapse>
@@ -72,6 +72,14 @@ const NavbarComponent: React.FC = function () {
             active={pathname === '/inquire'}
           >
             Inquire
+          </NavbarLink>
+
+          <NavbarLink
+            as={Link}
+            href='/cart'
+            active={pathname === '/cart'}
+          >
+            <BsCartFill />
           </NavbarLink>
         </NavbarCollapse>
       </Navbar>
