@@ -1,11 +1,11 @@
 'use client';
 
-import '../globals.css';
 import { Navbar, NavbarCollapse, NavbarLink } from 'flowbite-react';
 import Link from 'next/link';
-import { customTheme } from '../styles/themes';
 import { usePathname } from 'next/navigation';
 import { BsCartFill } from 'react-icons/bs';
+import '../globals.css';
+import { customTheme } from '../styles/themes';
 
 const NavbarComponent: React.FC = function () {
   const pathname = usePathname();
