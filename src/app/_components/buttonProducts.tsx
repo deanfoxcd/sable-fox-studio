@@ -1,7 +1,12 @@
 'use client';
 
 import { Button } from 'flowbite-react';
-import { addToCart, getCart, updateCartItem } from '../_lib/cartActions';
+import {
+  addToCart,
+  deleteCartItem,
+  getCart,
+  updateCartItem,
+} from '../_lib/cartActions';
 import { customTheme } from '../styles/themes';
 import { useState } from 'react';
 import { getGuestId } from '../_lib/guestId';
@@ -19,15 +24,15 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
   productId,
   onEdit,
 }) {
-  const [isAdding, setIsAdding] = useState(false);
+  const [isWorking, setIsWorking] = useState(false);
 
   const handleClick = async () => {
+    const guestId = getGuestId();
     if (role === 'admin') {
       if (productId) onEdit?.();
     } else if (role === 'shop' && productId) {
-      setIsAdding(true);
+      setIsWorking(true);
 
-      const guestId = getGuestId();
       console.log(guestId);
       const cart = await getCart(guestId);
 
@@ -49,8 +54,9 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
         console.log('Added to cart:', newItem);
       }
 
-      setIsAdding(false);
+      setIsWorking(false);
     } else if (role === 'cart') {
+      if (productId) await deleteCartItem(productId, guestId);
     }
   };
 
@@ -60,7 +66,7 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
       pill
       theme={customTheme.button}
       onClick={handleClick}
-      disabled={isAdding}
+      disabled={isWorking}
     >
       {children}
     </Button>

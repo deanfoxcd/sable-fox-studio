@@ -3,16 +3,26 @@
 import { UUIDTypes } from 'uuid';
 import { supabase } from '../utils/supabase/client';
 import { getGuestId } from './guestId';
+import { getProductById } from './productActions';
+import { Product } from '../types';
 
 export async function getCart(guestId: UUIDTypes) {
-  const { data: cart_items, error } = await supabase
+  const { data, error } = await supabase
     .from('cart_items')
     .select('*')
     .eq('guest_id', guestId);
 
   if (error) console.log(error);
 
-  return cart_items;
+  if (!data) return;
+
+  const cartItems = await Promise.all(
+    data.map((item) => getProductById(Number(item.product_id)))
+  );
+
+  console.log('Cart items:', cartItems);
+
+  return cartItems;
 }
 
 export async function addToCart(
@@ -53,9 +63,7 @@ export async function updateCartItem(
   return data;
 }
 
-export async function deleteCartItem(productId: string) {
-  const guestId = getGuestId();
-
+export async function deleteCartItem(productId: string, guestId: UUIDTypes) {
   const { error } = await supabase
     .from('cart_items')
     .delete()

@@ -8,7 +8,7 @@ export default async function Products() {
 
   return (
     <div className='text-white min-h-screen'>
-      <ul className='flex flex-wrap items-center justify-center'>
+      <ul className='flex flex-wrap items-center justify-center mt-6'>
         {products?.map((product: Product) => {
           return (
             <li
