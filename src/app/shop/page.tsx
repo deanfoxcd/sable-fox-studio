@@ -17,7 +17,7 @@ export default async function Products() {
             >
               <ProductCard
                 product={product}
-                admin={false}
+                role='shop'
               />
             </li>
           );

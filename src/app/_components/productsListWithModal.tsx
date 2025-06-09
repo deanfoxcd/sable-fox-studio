@@ -42,7 +42,7 @@ const ProductsListWithModal: React.FC<ProductsListWithModalProps> = function ({
             >
               <ProductCard
                 product={product}
-                admin={true}
+                role='admin'
                 onEdit={() => handleEdit(product.id)}
               />
             </div>

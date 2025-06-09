@@ -4,13 +4,13 @@ import ButtonProducts from './buttonProducts';
 
 interface ProductsCardProps {
   product: Product;
-  admin: boolean;
+  role: string;
   onEdit?: () => void;
 }
 
 const ProductCard: React.FC<ProductsCardProps> = function ({
   product,
-  admin,
+  role,
   onEdit,
 }) {
   return (
@@ -36,11 +36,17 @@ const ProductCard: React.FC<ProductsCardProps> = function ({
           ${product.price}
         </span>
         <ButtonProducts
-          admin={admin}
+          role={role}
           productId={product.id}
           onEdit={onEdit}
         >
-          {admin ? 'Edit product' : 'Add to cart'}
+          {role === 'admin'
+            ? 'Edit product'
+            : role === 'shop'
+              ? 'Add to cart'
+              : role === 'cart'
+                ? 'Remove from cart'
+                : ''}
         </ButtonProducts>
       </div>
     </Card>

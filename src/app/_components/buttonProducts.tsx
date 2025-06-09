@@ -8,23 +8,23 @@ import { getGuestId } from '../_lib/guestId';
 
 interface ButtonProps {
   children: string;
-  admin: boolean;
+  role: string;
   productId: string | undefined;
   onEdit?: () => void;
 }
 
 const ButtonProducts: React.FC<ButtonProps> = function ({
   children,
-  admin,
+  role,
   productId,
   onEdit,
 }) {
   const [isAdding, setIsAdding] = useState(false);
 
   const handleClick = async () => {
-    if (admin) {
+    if (role === 'admin') {
       if (productId) onEdit?.();
-    } else if (productId) {
+    } else if (role === 'shop' && productId) {
       setIsAdding(true);
 
       const guestId = getGuestId();
@@ -50,6 +50,7 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
       }
 
       setIsAdding(false);
+    } else if (role === 'cart') {
     }
   };
 
