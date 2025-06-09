@@ -3,10 +3,11 @@
 import { useEffect, useState } from 'react';
 import { getCart } from '../_lib/cartActions';
 import { getGuestId } from '../_lib/guestId';
+import { CartItem } from '../types';
 
 const Cart: React.FC = () => {
   const [guestId, setGuestId] = useState<string | null>(null);
-  const [cart, setCart] = useState<any>(null);
+  const [cart, setCart] = useState<CartItem[] | null>(null);
 
   useEffect(() => {
     const id = getGuestId();

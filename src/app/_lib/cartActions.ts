@@ -36,9 +36,11 @@ export async function addToCart(
   return data;
 }
 
-export async function updateCartItem(productId: string, quantity: number) {
-  const guestId = getGuestId();
-
+export async function updateCartItem(
+  guestId: UUIDTypes,
+  productId: string,
+  quantity: number
+) {
   const { data, error } = await supabase
     .from('cart_items')
     .update({ quantity })

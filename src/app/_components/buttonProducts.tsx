@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from 'flowbite-react';
-import { addToCart } from '../_lib/cartActions';
+import { addToCart, getCart, updateCartItem } from '../_lib/cartActions';
 import { customTheme } from '../styles/themes';
 import { useState } from 'react';
 import { getGuestId } from '../_lib/guestId';
@@ -29,9 +29,25 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
 
       const guestId = getGuestId();
       console.log(guestId);
-      const newItem = await addToCart(guestId, productId);
+      const cart = await getCart(guestId);
 
-      if (newItem) console.log('Added to cart:', newItem);
+      if (cart) {
+        const item = cart.find((item) => item.product_id === productId);
+        if (item) {
+          const updatedItem = await updateCartItem(
+            guestId,
+            productId,
+            item.quantity + 1
+          );
+          console.log('Updated cart item:', updatedItem);
+        } else {
+          const newItem = await addToCart(guestId, productId);
+          console.log('Added to cart:', newItem);
+        }
+      } else {
+        const newItem = await addToCart(guestId, productId);
+        console.log('Added to cart:', newItem);
+      }
 
       setIsAdding(false);
     }
