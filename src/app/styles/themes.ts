@@ -79,4 +79,36 @@ export const customTheme = createTheme({
       title: 'sr-only',
     },
   },
+
+  accordion: {
+    root: {
+      base: 'divide-y divide-gray-200 border-none dark:divide-gray-700 dark:border-gray-700',
+      flush: {
+        off: '!border-none',
+        on: '!border-none',
+      },
+    },
+    content: {
+      base: 'p-5 text-white',
+    },
+    title: {
+      arrow: {
+        base: 'h-6 w-6 shrink-0',
+        open: {
+          off: 'bg-transparent',
+          on: 'rotate-180',
+        },
+      },
+      base: 'flex w-full items-center justify-between p-5 text-left font-medium !bg-transparent !text-white !focus:ring-none !focus:ring-offset-0',
+      flush: {
+        off: 'hover:bg-gray-100 focus:ring-none focus:ring-red-200 dark:hover:bg-gray-800 dark:focus:ring-gray-800',
+        on: 'bg-transparent dark:bg-transparent',
+      },
+      heading: '!focus:ring-none !focus:ring-offset-0',
+      open: {
+        off: '',
+        on: '!focus:ring-none !focus:ring-offset-0',
+      },
+    },
+  },
 });

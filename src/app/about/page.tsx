@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import AboutAccordion from '../_components/aboutAccordion';
 
 const page: React.FC = function () {
   return (
@@ -36,7 +37,9 @@ const page: React.FC = function () {
         </div>
       </div>
 
-      <div></div>
+      <div>
+        <AboutAccordion />
+      </div>
     </div>
   );
 };
