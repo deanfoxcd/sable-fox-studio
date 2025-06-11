@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
 
-import './globals.css';
-import Header from './_components/header';
-import Navbar from './_components/navbar';
-import { FooterComponent } from './_components/footer';
 import { ThemeModeScript } from 'flowbite-react';
 import BackgroundImage from './_components/backgroundImg';
-import { BsCartFill } from 'react-icons/bs';
 import FloatingCartWrapper from './_components/FloatingCartWrapper';
+import { FooterComponent } from './_components/footer';
+import Header from './_components/header';
+import Navbar from './_components/navbar';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Sable Fox Studio',
@@ -32,7 +31,6 @@ export default function RootLayout({
           <BackgroundImage />
           <Header />
           <Navbar />
-          <BsCartFill />
           <FloatingCartWrapper />
         </div>
         <main className='flex-1'>{children}</main>

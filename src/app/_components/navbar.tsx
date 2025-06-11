@@ -78,9 +78,7 @@ const NavbarComponent: React.FC = function () {
             as={Link}
             href='/cart'
             active={pathname === '/cart'}
-          >
-            <BsCartFill />
-          </NavbarLink>
+          ></NavbarLink>
         </NavbarCollapse>
       </Navbar>
     </div>
