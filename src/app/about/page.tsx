@@ -40,6 +40,19 @@ const page: React.FC = function () {
       <div>
         <AboutAccordion />
       </div>
+
+      <div className='text-white mx-70 my-30 text-4xl'>
+        <p>
+          <em>
+            &quot;My art seeks to create a feeling from a familiar past, a
+            memory of a gentler time. Honoring the essence of your beloved
+            companion brings me immense joy and pride, and I truly believe that
+            their life is worthy of remembrance and honor. Valuing the beloved
+            bond between us and our animals is what brings my heart to
+            life.&quot;
+          </em>
+        </p>
+      </div>
     </div>
   );
 };

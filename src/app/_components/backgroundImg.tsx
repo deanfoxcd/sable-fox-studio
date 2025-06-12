@@ -9,6 +9,7 @@ const backgroundMap: Record<string, string> = {
   '/commissions': '/images/commissions-bg.jpeg',
   '/journal': '/images/journal.jpg',
   '/about': '/images/black.jpg',
+  '/inquire': '/images/inquire.jpeg',
   '/cart': '/images/black.jpg',
   '/login': '/images/commissions-bg.jpeg',
   '/admin/products': '/images/black.jpg',
