@@ -4,14 +4,19 @@ import Image from 'next/image';
 
 const ContactForm: React.FC = function () {
   return (
-    <div className='flex flex-col md:flex-row gap-8 !bg-[#868469] pt-4'>
-      <div className='md:w-1/2 flex flex-col items-center justify-center text-white px-20'>
+    <div className='flex flex-col md:flex-row gap-8 !bg-[#868469] pt-8'>
+      <div className='md:w-1/2 flex flex-col items-center justify-center text-white px-20 py-6'>
         <p className='py-2'>
           I’m so excited to work with you! If you have any questions about the
           process please feel free to contact me by email or through the contact
           form to the right.
         </p>
-        <p className='py-2'>sablefoxstudio@gmail.com</p>
+        <a
+          className='py-2 text-blue-100 hover:text-blue-200 underline underline-offset-2'
+          href='mailto:sablefoxstudio@gmail.com'
+        >
+          sablefoxstudio@gmail.com
+        </a>
         <p className='py-2'>
           You can also contact me here to check on orders, send photo
           references, availability for a consultation to discuss details,
