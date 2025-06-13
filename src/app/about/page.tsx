@@ -3,15 +3,16 @@ import AboutAccordion from '../_components/aboutAccordion';
 
 const page: React.FC = function () {
   return (
-    <div className='min-h-screen'>
+    <div className='min-h-screen !bg-[#C2BFCB] !text-[var(--main-brown)]'>
       <div className='flex justify-between mt-16'>
-        <div className='flex-1 text-white'>
-          <p className='text-5xl font-semibold px-16 py-8'>
+        <div className='flex-1 '>
+          <p className='text-5xl font-light px-16 py-8'>
             Welcome to my little studio! My name is Isabelle Fox, and I am the
             artist behind Sable Fox Studio. I am based in the foothills of the
             Smoky Mountains of Tennessee with my husband Dean, our little
             Shetland Sheepdog, Murphy, and our cat, Bob.
           </p>
+          <hr className='ml-16 mr-180' />
           <p className='px-16 py-8 text-3xl'>
             Growing up I always felt such a deep connection with animals, a love
             that inspired me to capture their essence through pigments on
@@ -41,7 +42,7 @@ const page: React.FC = function () {
         <AboutAccordion />
       </div>
 
-      <div className='text-white mx-70 my-30 text-4xl'>
+      <div className='text-[var(--main-brown)] mx-70 my-30 pb-20 text-4xl'>
         <p>
           <em>
             &quot;My art seeks to create a feeling from a familiar past, a

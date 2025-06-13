@@ -8,7 +8,7 @@ const backgroundMap: Record<string, string> = {
   '/portfolio': '/images/portfolio.jpeg',
   '/commissions': '/images/commissions-bg.jpeg',
   '/journal': '/images/journal.jpg',
-  '/about': '/images/black.jpg',
+  '/about': '/images/homepage-bg.jpg',
   '/inquire': '/images/inquire.jpeg',
   '/cart': '/images/black.jpg',
   '/login': '/images/commissions-bg.jpeg',

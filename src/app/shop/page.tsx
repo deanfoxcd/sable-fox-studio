@@ -9,19 +9,25 @@ export default async function Products() {
   return (
     <div className='text-white min-h-screen'>
       <ul className='flex flex-wrap items-center justify-center mt-6'>
-        {products?.map((product: Product) => {
-          return (
-            <li
-              key={product.id}
-              className='p-6'
-            >
-              <ProductCard
-                product={product}
-                role='shop'
-              />
-            </li>
-          );
-        })}
+        {products?.length === 0 ? (
+          <p className='text-center mt-20 text-4xl'>
+            New products coming soon!
+          </p>
+        ) : (
+          products?.map((product: Product) => {
+            return (
+              <li
+                key={product.id}
+                className='p-6'
+              >
+                <ProductCard
+                  product={product}
+                  role='shop'
+                />
+              </li>
+            );
+          })
+        )}
       </ul>
     </div>
   );
