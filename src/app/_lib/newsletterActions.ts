@@ -14,5 +14,6 @@ export async function save(formData: FormData) {
 
   if (error) {
     console.log(error);
+    return;
   }
 }

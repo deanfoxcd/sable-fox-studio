@@ -1,4 +1,3 @@
-import ContactForm from '../_components/contactForm';
 import Newsletter from '../_components/newsletter';
 import ScrollToJoinSection from '../_components/ScrollToJoinSection';
 
