@@ -1,9 +1,32 @@
+'use client';
+
 import { Button } from 'flowbite-react';
-import { customTheme } from '../styles/themes';
 import '../globals.css';
+import { customTheme } from '../styles/themes';
+import { useFormStatus } from 'react-dom';
+import { save } from '../_lib/newsletterActions';
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <Button
+      theme={customTheme.button}
+      color='alternative'
+      pill
+      disabled={pending}
+      type='submit'
+    >
+      Join the club
+    </Button>
+  );
+}
 
 const inputStyle =
   'bg-white text-black p-3 border-1 border-[var(--main-brown)] rounded-lg focus:border-2 focus:border-[var(--main-brown)] focus:ring-1 focus:ring-[var(--main-brown)] outline-none';
+
+// function save(formData: FormData) {
+//   console.log(formData.get('name'));
+// }
 
 const Newsletter: React.FC = function () {
   return (
@@ -18,7 +41,7 @@ const Newsletter: React.FC = function () {
             a spot opens up on the commissions waiting list, and learn more
             about the behind the scenes in the studio!
           </p>
-          <form action='#'>
+          <form action={save}>
             <div className='items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex-col sm:space-y-0'>
               <div className='flex gap-4 p-4'>
                 <label
@@ -29,6 +52,7 @@ const Newsletter: React.FC = function () {
                 </label>
                 <input
                   type='text'
+                  name='firstName'
                   id='firstName'
                   placeholder='First Name'
                   className={[inputStyle, 'w-full'].join(' ')}
@@ -41,6 +65,7 @@ const Newsletter: React.FC = function () {
                 </label>
                 <input
                   type='text'
+                  name='lastName'
                   id='lastName'
                   placeholder='Last Name'
                   className={[inputStyle, 'w-full'].join(' ')}
@@ -58,18 +83,13 @@ const Newsletter: React.FC = function () {
                   className={[inputStyle, 'w-auto'].join(' ')}
                   placeholder='Email address'
                   type='email'
+                  name='email'
                   id='email'
                   required
                 />
               </div>
               <div className='flex justify-center items-center mt-4'>
-                <Button
-                  theme={customTheme.button}
-                  color='alternative'
-                  pill
-                >
-                  Join the club
-                </Button>
+                <SubmitButton />
               </div>
             </div>
           </form>
