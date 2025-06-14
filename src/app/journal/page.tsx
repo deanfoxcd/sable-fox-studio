@@ -1,7 +1,10 @@
+import JournalPostCard from '../_components/journalPostCard';
+
 const Journal: React.FC = function () {
   return (
-    <div>
-      <h1 className='min-h-screen'>JOURNAL</h1>
+    <div className='min-h-screen'>
+      <h1>JOURNAL</h1>
+      <JournalPostCard />
     </div>
   );
 };
