@@ -12,3 +12,8 @@ export interface CartItem {
   quantity: number;
   added_at: string;
 }
+
+export interface JournalEntry {
+  title: string;
+  content: string;
+}
