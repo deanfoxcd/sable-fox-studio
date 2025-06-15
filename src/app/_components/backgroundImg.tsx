@@ -14,6 +14,7 @@ const backgroundMap: Record<string, string> = {
   '/login': '/images/commissions-bg.jpeg',
   '/admin/products': '/images/black.jpg',
   '/admin/edit-product/*': '/images/black.jpg',
+  '/admin/journal/add-entry': '/images/black.jpg',
 };
 
 export default function BackgroundImage() {
