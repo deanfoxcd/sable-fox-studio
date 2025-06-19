@@ -13,13 +13,27 @@ const backgroundMap: Record<string, string> = {
   '/cart': '/images/black.jpg',
   '/login': '/images/commissions-bg.jpeg',
   '/admin/products': '/images/black.jpg',
+  '/admin/products/*': '/images/black.jpg',
   '/admin/edit-product/*': '/images/black.jpg',
   '/admin/journal/add-entry': '/images/black.jpg',
 };
 
 export default function BackgroundImage() {
   const pathname = usePathname();
-  const bg = backgroundMap[pathname] || '/images/default-bg.jpg';
+  // Enhanced matching: supports wildcards (keys ending in *)
+  let bg = backgroundMap[pathname];
+  if (!bg) {
+    for (const key of Object.keys(backgroundMap)) {
+      if (key.endsWith('*')) {
+        const base = key.slice(0, -1); // remove the *
+        if (pathname.startsWith(base)) {
+          bg = backgroundMap[key];
+          break;
+        }
+      }
+    }
+  }
+  if (!bg) bg = '/images/default-bg.jpg';
 
   return (
     <img

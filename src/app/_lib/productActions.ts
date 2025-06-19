@@ -5,12 +5,34 @@ import { Product } from '../types';
 import { supabase } from '../utils/supabase/client';
 import { revalidatePath } from 'next/cache';
 
-export async function addProduct(product: Product) {
-  const { error } = await supabase.from('products').insert([product]);
+export async function addProduct(
+  product: Omit<Product, 'imageUrl'> & { file: File }
+) {
+  const filePath = `products/${Date.now()}_${product.file.name}`;
+  const { data, error: storageError } = await supabase.storage
+    .from('product-images')
+    .upload(filePath, product.file);
 
-  if (error) {
+  if (storageError) {
     redirect('/error');
   }
+
+  const { data: publicUrlData } = supabase.storage
+    .from('product-images')
+    .getPublicUrl(filePath);
+
+  const imageUrl = publicUrlData?.publicUrl || '';
+
+  const { error } = await supabase.from('products').insert([
+    {
+      name: product.name,
+      price: product.price,
+      description: product.description,
+      imageUrl,
+    },
+  ]);
+
+  if (error) redirect('/error');
 
   revalidatePath('/admin/products');
   redirect('/admin/products');

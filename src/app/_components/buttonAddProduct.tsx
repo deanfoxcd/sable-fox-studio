@@ -11,7 +11,7 @@ const AddProductButton: React.FC = function () {
       pill
       className='!m-4'
       theme={customTheme.button}
-      onClick={() => redirect('/admin/add-product')}
+      onClick={() => redirect('/admin/products/add-product')}
     >
       Add Product
     </Button>

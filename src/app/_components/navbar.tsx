@@ -42,21 +42,21 @@ const NavbarComponent: React.FC = function () {
             Portfolio
           </NavbarLink>
 
-          <NavbarLink
+          {/* <NavbarLink
             as={Link}
             href='/commissions'
             active={pathname === '/commissions'}
           >
             Commission
-          </NavbarLink>
+          </NavbarLink> */}
 
-          <NavbarLink
+          {/* <NavbarLink
             as={Link}
             href='/journal'
             active={pathname === '/journal'}
           >
             Journal
-          </NavbarLink>
+          </NavbarLink> */}
 
           <NavbarLink
             as={Link}

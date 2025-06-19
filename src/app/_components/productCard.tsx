@@ -22,10 +22,11 @@ const ProductCard: React.FC<ProductsCardProps> = function ({
       <Card className='w-100'>
         <div className='flex items-center justify-center'>
           <Image
-            src='/images/dog.jpeg'
-            alt='dog'
+            src={product.imageUrl}
+            alt={product.name}
             width={200}
             height={200}
+            // unoptimized
           />
         </div>
         <h5 className='text-xl font-semibold tracking-tight'>{product.name}</h5>
