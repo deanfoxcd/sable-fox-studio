@@ -3,6 +3,7 @@ import { Product } from '../types';
 import ButtonProducts from './buttonProducts';
 import QuantityPicker from './quantityPicker';
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
 
 interface ProductsCardProps {
   product: Product;
@@ -32,6 +33,7 @@ const ProductCard: React.FC<ProductsCardProps> = function ({
               }}
               priority={true}
               sizes='(max-width: 350px) 100vw, 350px'
+              onClick={() => redirect(`/shop/${product.id}`)}
             />
           </div>
         </div>
