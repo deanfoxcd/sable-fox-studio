@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import ProductCard from '../_components/productCard';
 import { getCart, updateCartItem } from '../_lib/cartActions';
 import { getGuestId } from '../_lib/guestId';
@@ -11,14 +11,12 @@ const Cart: React.FC = () => {
   const [cart, setCart] = useState<Product[]>([]);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
 
-  useEffect(() => {
+  const fetchCartData = useCallback(async () => {
     const id = getGuestId();
     setGuestId(id);
 
     getCart(id).then((cartData) => {
       if (cartData) {
-        console.log('Cart Data:', cartData);
-
         const newQuantities: Record<string, number> = {};
         cartData.forEach((product) => {
           if (product.id) {
@@ -31,17 +29,13 @@ const Cart: React.FC = () => {
           (prod, i, self) => i === self.findIndex((p) => p.id === prod.id)
         );
         setCart(uniqueProducts);
-        console.log('Cart:', uniqueProducts);
       }
     });
-
-    console.log('Guest id:', id);
   }, []);
 
-  // const updateQuantity = (productId: string, quantity: number) => {
-  //   if (!guestId) return;
-  //   updateCartItem(guestId, productId, quantity);
-  // };
+  useEffect(() => {
+    fetchCartData();
+  }, [fetchCartData]);
 
   return (
     <div className='text-white min-h-screen'>
@@ -55,6 +49,7 @@ const Cart: React.FC = () => {
               product={product}
               role='cart'
               quantity={quantities[product.id as string] || 0}
+              onCartUpdate={fetchCartData}
             />
           </li>
         ))}

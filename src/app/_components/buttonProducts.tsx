@@ -10,12 +10,15 @@ import {
 import { customTheme } from '../styles/themes';
 import { useState } from 'react';
 import { getGuestId } from '../_lib/guestId';
+import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 interface ButtonProps {
   children: string;
   role: string;
   productId: string | undefined;
   onEdit?: () => void;
+  onCartUpdate: (() => void) | undefined;
 }
 
 const ButtonProducts: React.FC<ButtonProps> = function ({
@@ -23,6 +26,7 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
   role,
   productId,
   onEdit,
+  onCartUpdate,
 }) {
   const [isWorking, setIsWorking] = useState(false);
 
@@ -55,8 +59,9 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
       }
 
       setIsWorking(false);
-    } else if (role === 'cart') {
-      if (productId) await deleteCartItem(productId, guestId);
+    } else if (role === 'cart' && productId) {
+      await deleteCartItem(productId, guestId);
+      onCartUpdate?.();
     }
   };
 

@@ -1,12 +1,33 @@
+'use client';
+
+import { UUIDTypes } from 'uuid';
+import { updateCartItem } from '../_lib/cartActions';
+import { useEffect, useState } from 'react';
+
 interface QuantityPickerProps {
   quantity: number;
+  productId: string;
+  guestId: UUIDTypes;
   // onQuantityChange: (quantity: number) => void;
 }
 
 const QuantityPicker: React.FC<QuantityPickerProps> = function ({
   quantity,
-  // onQuantityChange,
+  productId,
+  guestId,
 }) {
+  const [qty, setQty] = useState<number>(quantity || 1);
+
+  const onQuantityChange = (newValue: number) => {
+    setQty(newValue);
+  };
+
+  useEffect(() => {
+    updateCartItem(guestId, productId, qty);
+  }, [qty, guestId, productId]);
+
+  console.log(qty);
+
   return (
     <form className='max-w-xs mx-auto'>
       <label
@@ -19,9 +40,11 @@ const QuantityPicker: React.FC<QuantityPickerProps> = function ({
           id='decrement-button'
           data-input-counter-decrement='quantity-input'
           className='bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg px-3 h-8 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none '
+          onClick={() => onQuantityChange(qty - 1)}
         >
           -
         </button>
+
         <input
           type='text'
           id='quantity-input'
@@ -29,20 +52,22 @@ const QuantityPicker: React.FC<QuantityPickerProps> = function ({
           data-input-counter-min='1'
           data-input-counter-max='10'
           className='border-x-0 border border-gray-300 h-8 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-          value={quantity || 1}
+          value={qty}
           onChange={(e) => {
             const value = parseInt(e.target.value);
-            if (value >= 1 && value <= 10) {
-              // onQuantityChange(value);
+            if (!isNaN(value)) {
+              onQuantityChange(value);
             }
           }}
           required
         />
+
         <button
           type='button'
           id='increment-button'
           data-input-counter-increment='quantity-input'
           className='bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg px-3 h-8 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none'
+          onClick={() => onQuantityChange(qty + 1)}
         >
           +
         </button>

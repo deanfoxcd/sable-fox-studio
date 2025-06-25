@@ -27,7 +27,7 @@ const FloatingCart: React.FC = function () {
 
   return (
     <div
-      className='fixed bottom-10 right-10 z-50 text-black border rounded-full border-red-400 p-3 bg-white hover:cursor-pointer'
+      className='fixed bottom-10 right-10 z-50 text-black border rounded-full p-3 bg-white hover:cursor-pointer'
       onClick={() => {
         redirect('/cart');
       }}

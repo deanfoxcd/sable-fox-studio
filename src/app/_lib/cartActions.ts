@@ -5,6 +5,8 @@ import { supabase } from '../utils/supabase/client';
 import { getGuestId } from './guestId';
 import { getProductById } from './productActions';
 import { Product } from '../types';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
 export async function getCart(guestId: UUIDTypes) {
   const { data, error } = await supabase
@@ -20,7 +22,7 @@ export async function getCart(guestId: UUIDTypes) {
     data.map((item) => getProductById(Number(item.product_id)))
   );
 
-  console.log('Cart items:', cartItems);
+  // console.log('Cart items:', cartItems);
 
   return cartItems;
 }
@@ -71,4 +73,7 @@ export async function deleteCartItem(productId: string, guestId: UUIDTypes) {
     .eq('product_id', productId);
 
   if (error) console.log(error);
+
+  revalidatePath('/cart', 'layout');
+  redirect('/cart');
 }

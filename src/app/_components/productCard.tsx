@@ -3,13 +3,15 @@ import { Product } from '../types';
 import ButtonProducts from './buttonProducts';
 import QuantityPicker from './quantityPicker';
 import Image from 'next/image';
-import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import { getGuestId } from '../_lib/guestId';
 
 interface ProductsCardProps {
   product: Product;
   role: string;
   onEdit?: () => void;
   quantity?: number;
+  onCartUpdate?: () => void;
 }
 
 const ProductCard: React.FC<ProductsCardProps> = function ({
@@ -17,27 +19,37 @@ const ProductCard: React.FC<ProductsCardProps> = function ({
   role,
   onEdit,
   quantity,
+  onCartUpdate,
 }) {
   return (
     <div className='text-black dark:text-white'>
       <Card className='w-[350px] min-h-[420px] flex flex-col justify-between shadow-md overflow-hidden'>
-        <div className='w-full h-[240px] flex items-center justify-center bg-white dark:bg-gray-800 rounded-t-lg overflow-hidden'>
-          <div className='relative w-full h-full'>
-            <Image
-              src={product.imageUrl}
-              alt={product.name}
-              fill
-              style={{
-                objectFit: 'contain',
-                objectPosition: 'center',
-              }}
-              priority={true}
-              sizes='(max-width: 350px) 100vw, 350px'
-              onClick={() => redirect(`/shop/${product.id}`)}
-            />
+        <Link
+          href={`/shop/${product.id}`}
+          className='block w-full'
+        >
+          <div className='w-full h-[240px] flex items-center justify-center bg-white dark:bg-gray-800 rounded-t-lg overflow-hidden'>
+            <div className='relative w-full h-full'>
+              <Image
+                src={product.imageUrl}
+                alt={product.name}
+                fill
+                style={{
+                  objectFit: 'contain',
+                  objectPosition: 'center',
+                }}
+                priority={true}
+                sizes='(max-width: 350px) 100vw, 350px'
+              />
+            </div>
           </div>
-        </div>
-        <h5 className='text-xl font-semibold tracking-tight'>{product.name}</h5>
+        </Link>
+
+        <Link href={`/shop/${product.id}`}>
+          <h5 className='text-xl font-semibold tracking-tight'>
+            {product.name}
+          </h5>
+        </Link>
 
         <div>
           <p className='text-lg '>{product.description}</p>
@@ -53,6 +65,7 @@ const ProductCard: React.FC<ProductsCardProps> = function ({
               role={role}
               productId={product.id}
               onEdit={onEdit}
+              onCartUpdate={onCartUpdate}
             >
               {role === 'admin'
                 ? 'Edit product'
@@ -64,7 +77,13 @@ const ProductCard: React.FC<ProductsCardProps> = function ({
             </ButtonProducts>
           </div>
         </div>
-        {quantity && <QuantityPicker quantity={quantity} />}
+        {quantity && product.id && (
+          <QuantityPicker
+            quantity={quantity}
+            productId={product.id}
+            guestId={getGuestId()}
+          />
+        )}
       </Card>
     </div>
   );
