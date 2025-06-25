@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 const backgroundMap: Record<string, string> = {
   '/': '/images/homepage-bg.jpg',
   '/shop': '/images/admin-bg.jpeg',
+  '/shop/*': '/images/product-page copy.jpg',
   '/portfolio': '/images/portfolio.jpeg',
   '/commissions': '/images/commissions-bg.jpeg',
   '/journal': '/images/journal.jpg',
@@ -20,12 +21,11 @@ const backgroundMap: Record<string, string> = {
 
 export default function BackgroundImage() {
   const pathname = usePathname();
-  // Enhanced matching: supports wildcards (keys ending in *)
   let bg = backgroundMap[pathname];
   if (!bg) {
     for (const key of Object.keys(backgroundMap)) {
       if (key.endsWith('*')) {
-        const base = key.slice(0, -1); // remove the *
+        const base = key.slice(0, -1);
         if (pathname.startsWith(base)) {
           bg = backgroundMap[key];
           break;

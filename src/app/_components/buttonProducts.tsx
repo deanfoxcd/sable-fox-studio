@@ -16,7 +16,7 @@ interface ButtonProps {
   role: string;
   productId: string | undefined;
   onEdit?: () => void;
-  onCartUpdate: (() => void) | undefined;
+  onCartUpdate?: (() => void) | undefined;
 }
 
 const ButtonProducts: React.FC<ButtonProps> = function ({
