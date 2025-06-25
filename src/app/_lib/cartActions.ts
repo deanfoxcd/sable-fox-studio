@@ -1,12 +1,9 @@
 'use server';
 
+import { revalidatePath } from 'next/cache';
 import { UUIDTypes } from 'uuid';
 import { supabase } from '../utils/supabase/client';
-import { getGuestId } from './guestId';
 import { getProductById } from './productActions';
-import { Product } from '../types';
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
 
 export async function getCart(guestId: UUIDTypes) {
   const { data, error } = await supabase
@@ -21,8 +18,6 @@ export async function getCart(guestId: UUIDTypes) {
   const cartItems = await Promise.all(
     data.map((item) => getProductById(Number(item.product_id)))
   );
-
-  // console.log('Cart items:', cartItems);
 
   return cartItems;
 }
@@ -66,8 +61,6 @@ export async function updateCartItem(
 }
 
 export async function deleteCartItem(productId: string, guestId: UUIDTypes) {
-  console.log('Delete button clicked');
-
   try {
     const { error } = await supabase
       .from('cart_items')
@@ -81,5 +74,4 @@ export async function deleteCartItem(productId: string, guestId: UUIDTypes) {
   }
 
   revalidatePath('/cart', 'layout');
-  // redirect('/cart');
 }

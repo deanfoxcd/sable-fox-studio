@@ -2,21 +2,19 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import ProductCard from '../_components/productCard';
-import { getCart, updateCartItem } from '../_lib/cartActions';
+import { getCart } from '../_lib/cartActions';
 import { getGuestId } from '../_lib/guestId';
 import { Product } from '../types';
 
 const Cart: React.FC = () => {
-  const [guestId, setGuestId] = useState<string | null>(null);
+  // const [guestId, setGuestId] = useState<string | null>(null);
   const [cart, setCart] = useState<Product[]>([]);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
 
   const fetchCartData = useCallback(async () => {
-    console.log('Fetching cart data...');
-    const id = getGuestId();
-    setGuestId(id);
-    const cartData = await getCart(id);
-    console.log('Cart received', cartData);
+    // const id = getGuestId();
+    // setGuestId(id);
+    const cartData = await getCart(getGuestId());
 
     if (cartData) {
       const newQuantities: Record<string, number> = {};

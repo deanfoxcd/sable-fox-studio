@@ -35,35 +35,26 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
     } else if (role === 'shop' && productId) {
       setIsWorking(true);
 
-      console.log(guestId);
       const cart = await getCart(guestId);
 
       if (cart) {
         const item = cart.find((item) => item.product_id === productId);
         if (item) {
-          const updatedItem = await updateCartItem(
-            guestId,
-            productId,
-            item.quantity + 1
-          );
-          console.log('Updated cart item:', updatedItem);
+          await updateCartItem(guestId, productId, item.quantity + 1);
         } else {
-          const newItem = await addToCart(guestId, productId);
-          console.log('Added to cart:', newItem);
+          await addToCart(guestId, productId);
         }
       } else {
-        const newItem = await addToCart(guestId, productId);
-        console.log('Added to cart:', newItem);
+        await addToCart(guestId, productId);
       }
 
       setIsWorking(false);
     } else if (role === 'cart' && productId) {
       try {
         await deleteCartItem(productId, guestId);
-        console.log('After delete, calling cartUpdate');
         onCartUpdate?.();
       } catch (error) {
-        console.log('Error in delete operation:', error);
+        console.error(error);
       }
     }
   };
