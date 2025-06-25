@@ -1,17 +1,15 @@
 'use client';
 
 import { Button } from 'flowbite-react';
+import { useState } from 'react';
 import {
   addToCart,
   deleteCartItem,
   getCart,
   updateCartItem,
 } from '../_lib/cartActions';
-import { customTheme } from '../styles/themes';
-import { useState } from 'react';
 import { getGuestId } from '../_lib/guestId';
-import { redirect } from 'next/navigation';
-import { revalidatePath } from 'next/cache';
+import { customTheme } from '../styles/themes';
 
 interface ButtonProps {
   children: string;
@@ -60,8 +58,13 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
 
       setIsWorking(false);
     } else if (role === 'cart' && productId) {
-      await deleteCartItem(productId, guestId);
-      onCartUpdate?.();
+      try {
+        await deleteCartItem(productId, guestId);
+        console.log('After delete, calling cartUpdate');
+        onCartUpdate?.();
+      } catch (error) {
+        console.log('Error in delete operation:', error);
+      }
     }
   };
 

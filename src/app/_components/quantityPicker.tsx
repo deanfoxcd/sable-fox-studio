@@ -26,7 +26,7 @@ const QuantityPicker: React.FC<QuantityPickerProps> = function ({
     updateCartItem(guestId, productId, qty);
   }, [qty, guestId, productId]);
 
-  console.log(qty);
+  // console.log(qty);
 
   return (
     <form className='max-w-xs mx-auto'>

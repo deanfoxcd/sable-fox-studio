@@ -12,25 +12,26 @@ const Cart: React.FC = () => {
   const [quantities, setQuantities] = useState<Record<string, number>>({});
 
   const fetchCartData = useCallback(async () => {
+    console.log('Fetching cart data...');
     const id = getGuestId();
     setGuestId(id);
+    const cartData = await getCart(id);
+    console.log('Cart received', cartData);
 
-    getCart(id).then((cartData) => {
-      if (cartData) {
-        const newQuantities: Record<string, number> = {};
-        cartData.forEach((product) => {
-          if (product.id) {
-            newQuantities[product.id] = (newQuantities[product.id] || 0) + 1;
-          }
-        });
-        setQuantities(newQuantities);
+    if (cartData) {
+      const newQuantities: Record<string, number> = {};
+      cartData.forEach((product) => {
+        if (product.id) {
+          newQuantities[product.id] = (newQuantities[product.id] || 0) + 1;
+        }
+      });
+      setQuantities(newQuantities);
 
-        const uniqueProducts = cartData.filter(
-          (prod, i, self) => i === self.findIndex((p) => p.id === prod.id)
-        );
-        setCart(uniqueProducts);
-      }
-    });
+      const uniqueProducts = cartData.filter(
+        (prod, i, self) => i === self.findIndex((p) => p.id === prod.id)
+      );
+      setCart(uniqueProducts);
+    }
   }, []);
 
   useEffect(() => {

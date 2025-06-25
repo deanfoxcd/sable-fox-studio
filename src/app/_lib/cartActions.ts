@@ -66,14 +66,20 @@ export async function updateCartItem(
 }
 
 export async function deleteCartItem(productId: string, guestId: UUIDTypes) {
-  const { error } = await supabase
-    .from('cart_items')
-    .delete()
-    .eq('guest_id', guestId)
-    .eq('product_id', productId);
+  console.log('Delete button clicked');
 
-  if (error) console.log(error);
+  try {
+    const { error } = await supabase
+      .from('cart_items')
+      .delete()
+      .eq('guest_id', guestId)
+      .eq('product_id', productId);
+
+    if (error) console.log('Supabase delete error:', error);
+  } catch (error) {
+    console.log('Error in deleteCartItem:', error);
+  }
 
   revalidatePath('/cart', 'layout');
-  redirect('/cart');
+  // redirect('/cart');
 }
