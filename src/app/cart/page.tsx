@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import ProductCard from '../_components/productCard';
-import { getCart } from '../_lib/cartActions';
+import { emptyCart, getCart } from '../_lib/cartActions';
 import { getGuestId } from '../_lib/guestId';
 import { Product } from '../types';
 import { Button } from 'flowbite-react';
@@ -11,9 +11,10 @@ import { customTheme } from '../styles/themes';
 const Cart: React.FC = () => {
   const [cart, setCart] = useState<Product[]>([]);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
+  const guestId = getGuestId();
 
   const fetchCartData = useCallback(async () => {
-    const cartData = await getCart(getGuestId());
+    const cartData = await getCart(guestId);
 
     if (cartData) {
       const newQuantities: Record<string, number> = {};
@@ -37,6 +38,7 @@ const Cart: React.FC = () => {
 
   return (
     <div className='text-white min-h-screen'>
+      {cart.length === 0 && <div>Cart is empty</div>}
       <ul className='flex flex-wrap  justify-center mt-6'>
         {cart?.map((product) => (
           <li
@@ -53,13 +55,18 @@ const Cart: React.FC = () => {
         ))}
       </ul>
       <div className='flex justify-center items-center mt-6'>
-        <Button
-          color='alternative'
-          pill
-          theme={customTheme.button}
-        >
-          Empty cart
-        </Button>
+        {cart.length > 0 && (
+          <Button
+            color='alternative'
+            pill
+            theme={customTheme.button}
+            onClick={async () => {
+              await emptyCart(guestId);
+            }}
+          >
+            Empty cart
+          </Button>
+        )}
       </div>
     </div>
   );

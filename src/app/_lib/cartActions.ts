@@ -75,3 +75,12 @@ export async function deleteCartItem(productId: string, guestId: UUIDTypes) {
 
   revalidatePath('/cart', 'layout');
 }
+
+export async function emptyCart(guest_id: UUIDTypes) {
+  const { error } = await supabase
+    .from('cart_items')
+    .delete()
+    .eq('guest_id', guest_id);
+
+  if (error) console.log(error);
+}
