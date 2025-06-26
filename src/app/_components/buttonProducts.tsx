@@ -6,6 +6,7 @@ import {
   // addToCart,
   deleteCartItem,
   getCart,
+  getCartItemQuantity,
   updateCartItem,
 } from '../_lib/cartActions';
 import { getGuestId } from '../_lib/guestId';
@@ -38,19 +39,27 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
     } else if (role === 'shop' && productId) {
       setIsWorking(true);
 
-      const cart = await getCart(guestId);
+      const data = await getCart(guestId);
+      const cart = data?.cartItems;
+      console.log('Data:', data);
+      console.log('Cart:', cart);
 
       if (cart) {
-        const item = cart.find((item) => item.product_id === productId);
+        const item = cart.find((item) => item.id === productId); //finds product not cart item
+        // console.log('Item:', item);
         if (item) {
-          await updateCartItem(guestId, productId, item.quantity + 1);
+          const qty = await getCartItemQuantity(guestId, productId);
+          console.log(item.name, qty);
+          const newQty = qty + 1;
+
+          await updateCartItem(guestId, productId, newQty);
         } else {
           // await addToCart(guestId, productId);
-          addToCart({ guestId, productId });
+          addToCart({ guestId, productId, quantity: 1 });
         }
       } else {
         // await addToCart(guestId, productId);
-        addToCart({ guestId, productId });
+        addToCart({ guestId, productId, quantity: 1 });
       }
 
       setIsWorking(false);

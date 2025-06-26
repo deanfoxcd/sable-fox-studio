@@ -19,13 +19,13 @@ export async function getCart(guestId: UUIDTypes) {
     data.map((item) => getProductById(Number(item.product_id)))
   );
 
-  return cartItems;
+  return data;
 }
 
 export async function addToCart(
   guestId: UUIDTypes,
   productId: string,
-  quantity: number = 1
+  quantity: number
 ) {
   const { data, error } = await supabase
     .from('cart_items')
@@ -50,7 +50,7 @@ export async function updateCartItem(
 ) {
   const { data, error } = await supabase
     .from('cart_items')
-    .update({ quantity })
+    .update({ quantity: quantity })
     .eq('guest_id', guestId)
     .eq('product_id', productId)
     .select();
@@ -76,11 +76,28 @@ export async function deleteCartItem(productId: string, guestId: UUIDTypes) {
   revalidatePath('/cart', 'layout');
 }
 
-export async function emptyCart(guest_id: UUIDTypes) {
+export async function emptyCart(guestId: UUIDTypes) {
   const { error } = await supabase
     .from('cart_items')
     .delete()
-    .eq('guest_id', guest_id);
+    .eq('guest_id', guestId);
 
   if (error) console.log(error);
+}
+
+export async function getCartItemQuantity(
+  guestId: UUIDTypes,
+  productId: string
+) {
+  const { data, error } = await supabase
+    .from('cart_items')
+    .select('quantity')
+    .eq('guest_id', guestId)
+    .eq('product_id', productId);
+
+  if (error) console.log(error);
+
+  if (!data) return;
+
+  return data[0].quantity;
 }

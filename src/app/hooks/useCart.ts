@@ -8,11 +8,11 @@ export function useAddToCart() {
     mutationFn: async ({
       guestId,
       productId,
-      quantity = 1,
+      quantity,
     }: {
       guestId: string;
       productId: string;
-      quantity?: number;
+      quantity: number;
     }) => {
       return addToCart(guestId, productId, quantity);
     },

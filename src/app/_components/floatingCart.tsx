@@ -9,7 +9,8 @@ import { useCart } from '../hooks/useCart';
 const FloatingCart: React.FC = function () {
   const [guestId, setGuestId] = useState<string | null>(null);
 
-  const { data: cart } = useCart(guestId || '');
+  const { data } = useCart(guestId || '');
+  const cart = data?.cartItems;
 
   useEffect(() => {
     setGuestId(getGuestId());
