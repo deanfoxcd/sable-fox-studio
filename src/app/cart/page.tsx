@@ -5,15 +5,14 @@ import ProductCard from '../_components/productCard';
 import { getCart } from '../_lib/cartActions';
 import { getGuestId } from '../_lib/guestId';
 import { Product } from '../types';
+import { Button } from 'flowbite-react';
+import { customTheme } from '../styles/themes';
 
 const Cart: React.FC = () => {
-  // const [guestId, setGuestId] = useState<string | null>(null);
   const [cart, setCart] = useState<Product[]>([]);
   const [quantities, setQuantities] = useState<Record<string, number>>({});
 
   const fetchCartData = useCallback(async () => {
-    // const id = getGuestId();
-    // setGuestId(id);
     const cartData = await getCart(getGuestId());
 
     if (cartData) {
@@ -38,7 +37,7 @@ const Cart: React.FC = () => {
 
   return (
     <div className='text-white min-h-screen'>
-      <ul className='flex flex-wrap items-center justify-center mt-6'>
+      <ul className='flex flex-wrap  justify-center mt-6'>
         {cart?.map((product) => (
           <li
             key={product.id}
@@ -53,6 +52,15 @@ const Cart: React.FC = () => {
           </li>
         ))}
       </ul>
+      <div className='flex justify-center items-center mt-6'>
+        <Button
+          color='alternative'
+          pill
+          theme={customTheme.button}
+        >
+          Empty cart
+        </Button>
+      </div>
     </div>
   );
 };
