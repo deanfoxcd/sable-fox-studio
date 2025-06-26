@@ -3,13 +3,14 @@
 import { Button } from 'flowbite-react';
 import { useState } from 'react';
 import {
-  addToCart,
+  // addToCart,
   deleteCartItem,
   getCart,
   updateCartItem,
 } from '../_lib/cartActions';
 import { getGuestId } from '../_lib/guestId';
 import { customTheme } from '../styles/themes';
+import { useAddToCart } from '../hooks/useCart';
 
 interface ButtonProps {
   children: string;
@@ -28,6 +29,8 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
 }) {
   const [isWorking, setIsWorking] = useState(false);
 
+  const { mutate: addToCart, isPending } = useAddToCart();
+
   const handleClick = async () => {
     const guestId = getGuestId();
     if (role === 'admin') {
@@ -42,10 +45,12 @@ const ButtonProducts: React.FC<ButtonProps> = function ({
         if (item) {
           await updateCartItem(guestId, productId, item.quantity + 1);
         } else {
-          await addToCart(guestId, productId);
+          // await addToCart(guestId, productId);
+          addToCart({ guestId, productId });
         }
       } else {
-        await addToCart(guestId, productId);
+        // await addToCart(guestId, productId);
+        addToCart({ guestId, productId });
       }
 
       setIsWorking(false);

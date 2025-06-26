@@ -22,13 +22,13 @@ const ProductCard: React.FC<ProductsCardProps> = function ({
   onCartUpdate,
 }) {
   return (
-    <div className='text-black dark:text-white'>
-      <Card className='w-[350px] min-h-[420px] flex flex-col justify-between shadow-md overflow-hidden'>
+    <div className='text-black dark:text-white shadow-2xl shadow-black'>
+      <Card className='w-[350px] min-h-[420px] flex flex-col justify-between shadow-2xl overflow-hidden bg-[hsl(56,12%,65%)] border-none'>
         <Link
           href={`/shop/${product.id}`}
           className='block w-full'
         >
-          <div className='w-full h-[240px] flex items-center justify-center bg-white dark:bg-gray-800 rounded-t-lg overflow-hidden'>
+          <div className='w-full h-[240px] flex items-center justify-center bg-[hsl(56,12%,65%)] rounded-t-lg overflow-hidden'>
             <div className='relative w-full h-full'>
               <Image
                 src={product.imageUrl}

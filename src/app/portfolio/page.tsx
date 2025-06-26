@@ -1,7 +1,9 @@
 const Portfolio: React.FC = function () {
   return (
     <div className='min-h-screen'>
-      <h1 className='text-white font-cormorant text-5xl'>PORTFOLIO</h1>
+      <p className='text-center text-white mt-40 text-4xl'>
+        Portfolio coming soon!
+      </p>
     </div>
   );
 };
