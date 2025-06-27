@@ -3,7 +3,6 @@
 import { revalidatePath } from 'next/cache';
 import { UUIDTypes } from 'uuid';
 import { supabase } from '../utils/supabase/client';
-import { getProductById } from './productActions';
 
 export async function getCart(guestId: UUIDTypes) {
   const { data, error } = await supabase
@@ -15,18 +14,10 @@ export async function getCart(guestId: UUIDTypes) {
 
   if (!data) return;
 
-  const cartItems = await Promise.all(
-    data.map((item) => getProductById(Number(item.product_id)))
-  );
-
   return data;
 }
 
-export async function addToCart(
-  guestId: UUIDTypes,
-  productId: string
-  // quantity?: number
-) {
+export async function addToCart(guestId: UUIDTypes, productId: string) {
   const { data } = await supabase
     .from('cart_items')
     .select('product_id')

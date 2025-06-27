@@ -1,7 +1,6 @@
 'use client';
 
 import { Button } from 'flowbite-react';
-import { useState } from 'react';
 import { deleteCartItem } from '../_lib/cartActions';
 import { getGuestId } from '../_lib/guestId';
 import { useAddToCart } from '../hooks/useCart';
