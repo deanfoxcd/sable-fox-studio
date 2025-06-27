@@ -19,15 +19,13 @@ export async function getCart(guestId: UUIDTypes) {
     data.map((item) => getProductById(Number(item.product_id)))
   );
 
-  // console.log(data);
-
   return data;
 }
 
 export async function addToCart(
   guestId: UUIDTypes,
-  productId: string,
-  quantity: number
+  productId: string
+  // quantity?: number
 ) {
   const { data } = await supabase
     .from('cart_items')
@@ -60,14 +58,13 @@ export async function addToCart(
         {
           guest_id: guestId,
           product_id: Number(productId),
-          quantity,
+          quantity: 1,
         },
       ])
       .select();
 
     if (error) console.log(error);
 
-    console.log('NEW CART:', cartItems);
     return cartItems;
   }
 }

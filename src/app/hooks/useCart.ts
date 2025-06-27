@@ -8,13 +8,11 @@ export function useAddToCart() {
     mutationFn: async ({
       guestId,
       productId,
-      quantity,
     }: {
       guestId: string;
       productId: string;
-      quantity: number;
     }) => {
-      return addToCart(guestId, productId, quantity);
+      return addToCart(guestId, productId);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['cart'] });
