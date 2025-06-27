@@ -19,6 +19,8 @@ export async function getCart(guestId: UUIDTypes) {
     data.map((item) => getProductById(Number(item.product_id)))
   );
 
+  // console.log(data);
+
   return data;
 }
 
@@ -27,20 +29,47 @@ export async function addToCart(
   productId: string,
   quantity: number
 ) {
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from('cart_items')
-    .insert([
-      {
-        guest_id: guestId,
-        product_id: productId,
-        quantity,
-      },
-    ])
-    .select();
+    .select('product_id')
+    .eq('guest_id', guestId);
 
-  if (error) console.log(error);
+  const productIds: number[] = [];
+  data?.map((item) => {
+    productIds.push(item.product_id);
+  });
 
-  return data;
+  if (productIds.includes(Number(productId))) {
+    const itemQty = await getCartItemQuantity(guestId, productId);
+    const newQty = Number(itemQty) + 1;
+
+    const { data: cartItems, error } = await supabase
+      .from('cart_items')
+      .update({ quantity: newQty })
+      .eq('guest_id', guestId)
+      .eq('product_id', Number(productId))
+      .select();
+
+    if (error) console.log(error);
+
+    return cartItems;
+  } else {
+    const { data: cartItems, error } = await supabase
+      .from('cart_items')
+      .insert([
+        {
+          guest_id: guestId,
+          product_id: Number(productId),
+          quantity,
+        },
+      ])
+      .select();
+
+    if (error) console.log(error);
+
+    console.log('NEW CART:', cartItems);
+    return cartItems;
+  }
 }
 
 export async function updateCartItem(
