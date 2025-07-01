@@ -3,7 +3,6 @@ import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
   const { firstName, lastName, email, subject, message } = await req.json();
-  // const { name, email, message } = await req.json();
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -18,7 +17,6 @@ export async function POST(req: Request) {
     to: process.env.GMAIL_USER,
     subject: `New Contact Form Submission from ${firstName}`,
     text: `Name: ${firstName} ${lastName}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`,
-    // text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
   };
 
   try {
