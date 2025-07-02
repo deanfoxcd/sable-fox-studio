@@ -8,16 +8,14 @@ export function useAddToCart() {
     mutationFn: async ({
       guestId,
       productId,
-      quantity = 1,
     }: {
       guestId: string;
       productId: string;
-      quantity?: number;
     }) => {
-      return addToCart(guestId, productId, quantity);
+      return addToCart(guestId, productId);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['cart'] });
+      queryClient.invalidateQueries({ queryKey: ['cart'], exact: false });
     },
   });
 }
@@ -27,5 +25,7 @@ export function useCart(guestId: string) {
     queryKey: ['cart', guestId],
     queryFn: () => getCart(guestId),
     enabled: !!guestId,
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
   });
 }
