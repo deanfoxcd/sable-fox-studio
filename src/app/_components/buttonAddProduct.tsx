@@ -9,7 +9,6 @@ const AddProductButton: React.FC = function () {
     <Button
       color='alternative'
       pill
-      className='!m-4'
       theme={customTheme.button}
       onClick={() => redirect('/admin/products/add-product')}
     >

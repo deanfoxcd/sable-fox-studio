@@ -25,10 +25,10 @@ export default async function PrivateProductsPage() {
 
       <ProductsListWithModal products={products} />
 
-      <div>
+      <div className='m-4'>
         <AddProductButton />
       </div>
-      <div>
+      <div className='m-4'>
         <LogOutButton />
       </div>
     </div>

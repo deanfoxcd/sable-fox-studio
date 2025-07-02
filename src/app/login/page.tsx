@@ -1,9 +1,8 @@
 import { login } from '@/app/_lib/authActions';
 import { Button } from 'flowbite-react';
+import ViewProductsButton from '../_components/viewProductsButton';
 import { customTheme } from '../styles/themes';
 import { supabase } from '../utils/supabase/client';
-import { redirect } from 'next/navigation';
-import ViewProductsButton from '../_components/viewProductsButton';
 
 const Login: React.FC = async function () {
   const inputStyle =
@@ -11,7 +10,7 @@ const Login: React.FC = async function () {
 
   const user = await supabase.auth.getUser();
 
-  if (user)
+  if (user.data.user)
     return (
       <div className='text-white flex flex-col gap-5 items-center justify-center mt-20 text-4xl'>
         <p>You are already logged in</p>
