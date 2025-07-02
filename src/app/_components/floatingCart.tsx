@@ -9,7 +9,7 @@ import { useCart } from '../hooks/useCart';
 const FloatingCart: React.FC = function () {
   const [guestId, setGuestId] = useState<string | null>(null);
 
-  const { data: cart } = useCart(guestId || '');
+  const { data: cart, refetch } = useCart(guestId ?? '');
 
   let cartQuantity = 0;
   cart?.map((item) => {
@@ -19,6 +19,12 @@ const FloatingCart: React.FC = function () {
   useEffect(() => {
     setGuestId(getGuestId());
   }, []);
+
+  useEffect(() => {
+    if (guestId) {
+      refetch();
+    }
+  }, [guestId, refetch]);
 
   return (
     <div
