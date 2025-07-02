@@ -9,8 +9,12 @@ import { useCart } from '../hooks/useCart';
 const FloatingCart: React.FC = function () {
   const [guestId, setGuestId] = useState<string | null>(null);
 
-  const { data } = useCart(guestId || '');
-  const cart = data?.cartItems;
+  const { data: cart } = useCart(guestId || '');
+
+  let cartQuantity = 0;
+  cart?.map((item) => {
+    cartQuantity += item.quantity;
+  });
 
   useEffect(() => {
     setGuestId(getGuestId());
@@ -25,7 +29,7 @@ const FloatingCart: React.FC = function () {
     >
       <BsCart3 className='w-8 h-8' />
       <p className='absolute top-0 right-0 text-white bg-red-500 rounded-full w-5 h-5 flex items-center justify-center'>
-        {cart?.length || 0}
+        {cartQuantity}
       </p>
     </div>
   );
