@@ -3,7 +3,6 @@
 import { Navbar, NavbarCollapse, NavbarLink } from 'flowbite-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BsCartFill } from 'react-icons/bs';
 import '../globals.css';
 import { customTheme } from '../styles/themes';
 
@@ -41,22 +40,6 @@ const NavbarComponent: React.FC = function () {
           >
             Portfolio
           </NavbarLink>
-
-          {/* <NavbarLink
-            as={Link}
-            href='/commissions'
-            active={pathname === '/commissions'}
-          >
-            Commission
-          </NavbarLink> */}
-
-          {/* <NavbarLink
-            as={Link}
-            href='/journal'
-            active={pathname === '/journal'}
-          >
-            Journal
-          </NavbarLink> */}
 
           <NavbarLink
             as={Link}

@@ -2,22 +2,19 @@
 @plugin 'flowbite-react/plugin/tailwindcss';
 @source '../../.flowbite-react/class-list.json';
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap'); */
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --main-brown: #61534C;
-
-
+  --main-brown: #61534c;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-main-brown: var(--main-brown)
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* --color-main-brown: var(--main-brown) --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono); */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,9 +28,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   border: var(--main-brown);
-  font-family: 'Cormorant Garamond', serif;
+  /* font-family: 'Cormorant Garamond', serif; */
 }
 
-.font-cormorant {
+/* .font-cormorant {
   font-family: 'Cormorant Garamond', serif;
-}
+} */

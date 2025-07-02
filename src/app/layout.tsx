@@ -9,6 +9,14 @@ import Navbar from './_components/navbar';
 import './globals.css';
 import QueryProviderWrapper from './providers/QueryProvider';
 
+import { Cormorant_Garamond } from 'next/font/google';
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: 'Sable Fox Studio',
   description: 'Website for Sable Fox Studio',
@@ -28,7 +36,9 @@ export default function RootLayout({
         <head>
           <ThemeModeScript />
         </head>
-        <body className='antialiase min-h-screen flex flex-col'>
+        <body
+          className={`${cormorant.className} antialiase min-h-screen flex flex-col`}
+        >
           <div>
             <BackgroundImage />
             <Header />

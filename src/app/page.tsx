@@ -4,7 +4,7 @@ import LandingPage from './_components/landingPage';
 
 export default function Home() {
   return (
-    <div className='text-xl items-center justify-items-center font-cormorant'>
+    <div className='text-xl items-center justify-items-center '>
       <ScrollToJoinSection role='home'>
         <LandingPage />
       </ScrollToJoinSection>
