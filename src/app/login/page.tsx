@@ -1,10 +1,23 @@
 import { login } from '@/app/_lib/authActions';
 import { Button } from 'flowbite-react';
 import { customTheme } from '../styles/themes';
+import { supabase } from '../utils/supabase/client';
+import { redirect } from 'next/navigation';
+import ViewProductsButton from '../_components/viewProductsButton';
 
-const Login: React.FC = function () {
+const Login: React.FC = async function () {
   const inputStyle =
     'bg-white text-black p-3 border-1 border-[var(--main-brown)] rounded-lg focus:border-2 focus:border-[var(--main-brown)] focus:ring-1 focus:ring-[var(--main-brown)] outline-none';
+
+  const user = await supabase.auth.getUser();
+
+  if (user)
+    return (
+      <div className='text-white flex flex-col gap-5 items-center justify-center mt-20 text-4xl'>
+        <p>You are already logged in</p>
+        <ViewProductsButton />
+      </div>
+    );
 
   return (
     <div>
@@ -24,7 +37,7 @@ const Login: React.FC = function () {
                     Email
                   </label>
                   <input
-                    type='email'
+                    type='text'
                     name='email'
                     id='email'
                     className={[inputStyle, 'w-full'].join(' ')}

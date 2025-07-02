@@ -5,6 +5,9 @@ import ProductsListWithModal from '@/app/_components/productsListWithModal';
 import { getProducts } from '@/app/_lib/productActions';
 import { Product } from '@/app/types';
 import { createClient } from '@/app/utils/supabase/server';
+import { Button } from 'flowbite-react';
+import { logOut } from '@/app/_lib/authActions';
+import LogOutButton from '@/app/_components/logOutButton';
 
 export default async function PrivateProductsPage() {
   const supabase = await createClient();
@@ -24,6 +27,9 @@ export default async function PrivateProductsPage() {
 
       <div>
         <AddProductButton />
+      </div>
+      <div>
+        <LogOutButton />
       </div>
     </div>
   );
