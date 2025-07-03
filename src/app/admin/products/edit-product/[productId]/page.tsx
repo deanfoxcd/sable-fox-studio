@@ -4,9 +4,9 @@ import { getProductById } from '@/app/_lib/productActions';
 //   params: { productId: string };
 // }
 
-const EditProduct = async ({ params }) => {
-  const productId = Number(params.productId);
-  const productArr = await getProductById(productId);
+const EditProduct = async (props: unknown) => {
+  const { productId } = (props as { params: { productId: string } }).params;
+  const productArr = await getProductById(Number(productId));
   const product = productArr?.[0];
 
   if (!product) {
