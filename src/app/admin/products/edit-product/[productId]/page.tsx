@@ -1,10 +1,10 @@
 import { getProductById } from '@/app/_lib/productActions';
 
-interface EditProductProps {
+interface PageProps {
   params: { productId: string };
 }
 
-const EditProduct = async ({ params }: EditProductProps) => {
+const EditProduct = async ({ params }: PageProps) => {
   const productId = Number(params.productId);
   const productArr = await getProductById(productId);
   const product = productArr?.[0];
