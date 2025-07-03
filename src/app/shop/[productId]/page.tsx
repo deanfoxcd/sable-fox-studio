@@ -3,8 +3,8 @@ import Image from 'next/image';
 import ButtonProducts from '@/app/_components/buttonProducts';
 import { getProductById } from '@/app/_lib/productActions';
 
-const ProductPage = async function ({ params }) {
-  const { productId } = await params;
+const ProductPage = async function (props: unknown) {
+  const { productId } = (props as { params: { productId: string } }).params;
   const product = await getProductById(Number(productId));
 
   return (
