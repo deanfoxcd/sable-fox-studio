@@ -23,12 +23,6 @@ A beautiful, modern website for Sable Fox Studio – a custom art studio in Knox
 
 ---
 
-## 📸 Screenshots
-
-> _Add screenshots here!_
-
----
-
 ## 🛠️ Getting Started (work in progress regarding Supabase)
 
 To run this project locally:
@@ -63,14 +57,12 @@ To run this project locally:
 
 ## ⚠️ Known Issues
 
-- Floating Cart badge isn't updating after implementing RLS in Supabase
-- Some cart functionality still needs to be polished after implementing RLS
+-
 
 ---
 
 ## ✅ To Do
 
-- Fix all issues regarding RLS in Supabase and make sure all is working again
 - Implement a journal/blog post section (probably using a CMS for the text editor)
 - Implement checkout functionality and payment (probably using Square)
 - Implement dark mode and mobile views styling
