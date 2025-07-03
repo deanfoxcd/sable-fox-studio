@@ -1,5 +1,3 @@
-import '../globals.css';
-
 const Header: React.FC = function () {
   return (
     <div className='relative flex items-center justify-center'>

@@ -1,10 +1,11 @@
 'use client';
 
-import { Button } from 'flowbite-react';
-import { customTheme } from '../styles/themes';
 import Image from 'next/image';
+import { Button } from 'flowbite-react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+
+import { customTheme } from '../styles/themes';
 
 const ContactForm: React.FC = function () {
   const [formData, setFormData] = useState({

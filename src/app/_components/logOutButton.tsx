@@ -1,7 +1,9 @@
 'use client';
+
 import { Button } from 'flowbite-react';
-import { logOut } from '../_lib/authActions';
 import { redirect } from 'next/navigation';
+
+import { logOut } from '../_lib/authActions';
 import { customTheme } from '../styles/themes';
 
 const LogOutButton: React.FC = function () {

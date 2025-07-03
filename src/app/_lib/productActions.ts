@@ -1,9 +1,10 @@
 'use server';
 
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
+
 import { Product } from '../types';
 import { createClient } from '../utils/supabase/server';
-import { revalidatePath } from 'next/cache';
 
 export async function addProduct(
   product: Omit<Product, 'imageUrl'> & { file: File }
@@ -16,7 +17,6 @@ export async function addProduct(
     .upload(filePath, product.file);
 
   if (storageError) {
-    console.log('STORAGE ERROR', storageError);
     redirect('/error');
   }
 
@@ -36,7 +36,6 @@ export async function addProduct(
   ]);
 
   if (error) {
-    console.log('ADD PRODUCT ERROR');
     redirect('/error');
   }
 
@@ -79,8 +78,6 @@ export async function updateProduct(id: number, product: Product) {
     })
     .eq('id', id)
     .select();
-
-  console.log('Updated product:', data);
 
   if (error) {
     redirect('/error');

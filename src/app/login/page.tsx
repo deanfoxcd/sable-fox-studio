@@ -1,6 +1,7 @@
-import { login } from '@/app/_lib/authActions';
 import { Button } from 'flowbite-react';
+
 import ViewProductsButton from '../_components/viewProductsButton';
+import { login } from '@/app/_lib/authActions';
 import { customTheme } from '../styles/themes';
 import { supabase } from '../utils/supabase/client';
 

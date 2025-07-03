@@ -1,9 +1,9 @@
 'use client';
 
 import { Button } from 'flowbite-react';
-import '../globals.css';
-import { customTheme } from '../styles/themes';
 import { useFormStatus } from 'react-dom';
+
+import { customTheme } from '../styles/themes';
 import { save } from '../_lib/newsletterActions';
 
 function SubmitButton() {
@@ -23,10 +23,6 @@ function SubmitButton() {
 
 const inputStyle =
   'bg-white text-black p-3 border-1 border-[var(--main-brown)] rounded-lg focus:border-2 focus:border-[var(--main-brown)] focus:ring-1 focus:ring-[var(--main-brown)] outline-none';
-
-// function save(formData: FormData) {
-//   console.log(formData.get('name'));
-// }
 
 const Newsletter: React.FC = function () {
   return (

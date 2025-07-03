@@ -2,6 +2,7 @@
 
 import { revalidatePath } from 'next/cache';
 import { UUIDTypes } from 'uuid';
+
 import { supabase } from '../utils/supabase/client';
 
 export async function getCart(guestId: UUIDTypes) {

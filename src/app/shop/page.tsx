@@ -1,4 +1,5 @@
 import ProductCard from '../_components/productCard';
+
 import { getProducts } from '../_lib/productActions';
 import { Product } from '../types';
 

@@ -3,6 +3,7 @@
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { BsCart3 } from 'react-icons/bs';
+
 import { getGuestId } from '../_lib/guestId';
 import { useCart } from '../hooks/useCart';
 

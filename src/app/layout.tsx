@@ -1,15 +1,14 @@
 import type { Metadata } from 'next';
-
 import { ThemeModeScript } from 'flowbite-react';
+import { Cormorant_Garamond } from 'next/font/google';
+
+import './globals.css';
 import BackgroundImage from './_components/backgroundImg';
 import FloatingCartWrapper from './_components/FloatingCartWrapper';
-import { FooterComponent } from './_components/footer';
 import Header from './_components/header';
 import Navbar from './_components/navbar';
-import './globals.css';
 import QueryProviderWrapper from './providers/QueryProvider';
-
-import { Cormorant_Garamond } from 'next/font/google';
+import { FooterComponent } from './_components/footer';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],

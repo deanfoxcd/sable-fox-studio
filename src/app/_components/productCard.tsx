@@ -1,9 +1,10 @@
-import { Card } from 'flowbite-react';
-import { Product } from '../types';
-import ButtonProducts from './buttonProducts';
-import QuantityPicker from './quantityPicker';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Card } from 'flowbite-react';
+
+import ButtonProducts from './buttonProducts';
+import QuantityPicker from './quantityPicker';
+import { Product } from '../types';
 import { getGuestId } from '../_lib/guestId';
 
 interface ProductsCardProps {

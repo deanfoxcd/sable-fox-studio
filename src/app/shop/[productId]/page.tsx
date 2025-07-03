@@ -1,6 +1,7 @@
+import Image from 'next/image';
+
 import ButtonProducts from '@/app/_components/buttonProducts';
 import { getProductById } from '@/app/_lib/productActions';
-import Image from 'next/image';
 
 const ProductPage = async function ({
   params,
@@ -13,7 +14,6 @@ const ProductPage = async function ({
   return (
     <div className='container mx-auto px-4 py-12'>
       <div className='flex flex-col md:flex-row gap-8 max-w-6xl mx-auto'>
-        {/* Left side - Product Image */}
         <div className='w-full'>
           <div className='bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden'>
             <Image
@@ -27,7 +27,6 @@ const ProductPage = async function ({
           </div>
         </div>
 
-        {/* Right side - Product Details */}
         <div className='w-full space-y-6'>
           <div>
             <h1 className='text-3xl font-bold text-gray-900 dark:text-white mb-2'>

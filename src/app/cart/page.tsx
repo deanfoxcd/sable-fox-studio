@@ -1,13 +1,14 @@
 'use client';
 
+import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
+import { Button } from 'flowbite-react';
+
 import ProductCard from '../_components/productCard';
 import { emptyCart, getCart } from '../_lib/cartActions';
 import { getGuestId } from '../_lib/guestId';
 import { CartItem, Product } from '../types';
-import { Button } from 'flowbite-react';
 import { customTheme } from '../styles/themes';
-import Link from 'next/link';
 import { getProductById } from '../_lib/productActions';
 
 const Cart: React.FC = () => {
@@ -26,7 +27,6 @@ const Cart: React.FC = () => {
     setLoadingCart(true);
     const cartData = await getCart(guestId);
     setCart(cartData || []);
-    console.log(cartData);
     setLoadingCart(false);
   }, [guestId]);
 

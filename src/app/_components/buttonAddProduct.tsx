@@ -1,8 +1,9 @@
 'use client';
 
 import { Button } from 'flowbite-react';
-import { customTheme } from '../styles/themes';
 import { redirect } from 'next/navigation';
+
+import { customTheme } from '../styles/themes';
 
 const AddProductButton: React.FC = function () {
   return (

@@ -1,8 +1,9 @@
 'use client';
 
 import { QueryClientProvider } from '@tanstack/react-query';
-import cartQueryClient from '../_lib/QueryClient';
 import { ReactNode } from 'react';
+
+import cartQueryClient from '../_lib/QueryClient';
 
 interface QueryProviderProps {
   children: ReactNode;

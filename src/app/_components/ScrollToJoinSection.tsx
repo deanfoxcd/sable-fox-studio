@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Newsletter from './newsletter';
 import { HiArrowLongDown } from 'react-icons/hi2';
+
+import Newsletter from './newsletter';
 import ContactForm from './contactForm';
 
 interface ScrollToJoinSectionProps {

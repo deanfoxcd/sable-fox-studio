@@ -1,14 +1,14 @@
 'use client';
 
-import { UUIDTypes } from 'uuid';
-import { updateCartItem } from '../_lib/cartActions';
 import { useEffect, useState } from 'react';
+import { UUIDTypes } from 'uuid';
+
+import { updateCartItem } from '../_lib/cartActions';
 
 interface QuantityPickerProps {
   quantity: number;
   productId: string;
   guestId: UUIDTypes;
-  // onQuantityChange: (quantity: number) => void;
 }
 
 const QuantityPicker: React.FC<QuantityPickerProps> = function ({
@@ -25,8 +25,6 @@ const QuantityPicker: React.FC<QuantityPickerProps> = function ({
   useEffect(() => {
     updateCartItem(guestId, productId, qty);
   }, [qty, guestId, productId]);
-
-  // console.log(qty);
 
   return (
     <form className='max-w-xs mx-auto'>

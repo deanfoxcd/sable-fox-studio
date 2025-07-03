@@ -1,9 +1,9 @@
 'use client';
 
-import { Navbar, NavbarCollapse, NavbarLink } from 'flowbite-react';
 import Link from 'next/link';
+import { Navbar, NavbarCollapse, NavbarLink } from 'flowbite-react';
 import { usePathname } from 'next/navigation';
-import '../globals.css';
+
 import { customTheme } from '../styles/themes';
 
 const NavbarComponent: React.FC = function () {
@@ -65,16 +65,6 @@ const NavbarComponent: React.FC = function () {
         </NavbarCollapse>
       </Navbar>
     </div>
-
-    // <div>
-    //   <ul className='flex justify-center gap-10 font-cormorant text-xl'>
-    //     <li>About</li>
-    //     <li>Portfolio</li>
-    //     <li>Commission</li>
-    //     <li>Journal</li>
-    //     <li>Inquire</li>
-    //   </ul>
-    // </div>
   );
 };
 

@@ -4,6 +4,7 @@ import {
   AccordionPanel,
   AccordionTitle,
 } from 'flowbite-react';
+
 import { customTheme } from '../styles/themes';
 
 const AboutAccordion = () => {
