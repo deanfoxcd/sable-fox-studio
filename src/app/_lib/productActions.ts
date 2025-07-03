@@ -2,18 +2,21 @@
 
 import { redirect } from 'next/navigation';
 import { Product } from '../types';
-import { supabase } from '../utils/supabase/client';
+import { createClient } from '../utils/supabase/server';
 import { revalidatePath } from 'next/cache';
 
 export async function addProduct(
   product: Omit<Product, 'imageUrl'> & { file: File }
 ) {
+  const supabase = await createClient();
   const filePath = `products/${Date.now()}_${product.file.name}`;
+
   const { data, error: storageError } = await supabase.storage
     .from('product-images')
     .upload(filePath, product.file);
 
   if (storageError) {
+    console.log('STORAGE ERROR', storageError);
     redirect('/error');
   }
 
@@ -32,13 +35,18 @@ export async function addProduct(
     },
   ]);
 
-  if (error) redirect('/error');
+  if (error) {
+    console.log('ADD PRODUCT ERROR');
+    redirect('/error');
+  }
 
   revalidatePath('/admin/products');
   redirect('/admin/products');
 }
 
 export async function getProducts() {
+  const supabase = await createClient();
+
   const { data: products, error } = await supabase.from('products').select('*');
 
   if (error) console.log(error);
@@ -47,6 +55,8 @@ export async function getProducts() {
 }
 
 export async function getProductById(id: number) {
+  const supabase = await createClient();
+
   const { data: product, error } = await supabase
     .from('products')
     .select('*')
@@ -58,6 +68,8 @@ export async function getProductById(id: number) {
 }
 
 export async function updateProduct(id: number, product: Product) {
+  const supabase = await createClient();
+
   const { data, error } = await supabase
     .from('products')
     .update({
@@ -79,6 +91,8 @@ export async function updateProduct(id: number, product: Product) {
 }
 
 export async function deleteProduct(id: number) {
+  const supabase = await createClient();
+
   const { error } = await supabase.from('products').delete().eq('id', id);
 
   if (error) {
