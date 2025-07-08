@@ -33,7 +33,7 @@ export default function BackgroundImage() {
       }
     }
   }
-  if (!bg) bg = '/images/default-bg.jpg';
+  if (!bg) bg = '/images/black.jpg';
 
   return (
     <img
