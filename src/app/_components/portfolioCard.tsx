@@ -4,7 +4,13 @@ import { Card } from 'flowbite-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const PortfolioCard = ({ imageName }: { imageName: string }) => {
+const PortfolioCard = ({
+  imageName,
+  isModalOpen,
+}: {
+  imageName: string;
+  isModalOpen: boolean;
+}) => {
   return (
     <div className='text-black dark:text-white'>
       <Card className='w-[350px] flex flex-col justify-between shadow-2xl overflow-hidden bg-[hsl(56,12%,65%)] border-none p-2'>

@@ -1,6 +1,8 @@
 'use client';
 
-import Masonary from '../_components/masonary';
+import dynamic from 'next/dynamic';
+
+const Masonary = dynamic(() => import('../_components/masonary'), { ssr: false });
 import PortfolioCard from '../_components/portfolioCard';
 
 // import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
