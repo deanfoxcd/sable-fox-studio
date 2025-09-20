@@ -7,18 +7,17 @@ import Link from 'next/link';
 const PortfolioCard = ({
   imageName,
   isModalOpen,
+  onImageClick,
 }: {
   imageName: string;
   isModalOpen: boolean;
+  onImageClick: (imageName: string) => void;
 }) => {
   return (
     <div className='text-black dark:text-white'>
       <Card className='w-[350px] flex flex-col justify-between shadow-2xl overflow-hidden bg-[hsl(56,12%,65%)] border-none p-2'>
-        <Link
-          href=''
-          className='block w-full h-full'
-        >
-          <div className=' w-full'>
+        <div className='block w-full h-full'>
+          <div className='w-full cursor-pointer'>
             <Image
               src={imageName}
               alt=''
@@ -32,9 +31,10 @@ const PortfolioCard = ({
                 display: 'block',
               }}
               priority={true}
+              onClick={() => onImageClick(imageName)}
             />
           </div>
-        </Link>
+        </div>
       </Card>
     </div>
   );

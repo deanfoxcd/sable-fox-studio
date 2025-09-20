@@ -24,6 +24,11 @@ const Masonary: React.FC = function () {
     setSelectedImage('');
   };
 
+  const onImageClick = (imageName: string) => {
+    setIsModalOpen(true);
+    setSelectedImage(imageName);
+  };
+
   return (
     <>
       <Masonry
@@ -34,14 +39,15 @@ const Masonary: React.FC = function () {
           <div
             className='mb-6'
             key={data.id}
-            onClick={() => {
-              setIsModalOpen(true);
-              setSelectedImage(data.imageName);
-            }}
+            // onClick={() => {
+            //   setIsModalOpen(true);
+            //   setSelectedImage(data.imageName);
+            // }}
           >
             <PortfolioCard
               imageName={data.imageName}
               isModalOpen={isModalOpen}
+              onImageClick={onImageClick}
             />
           </div>
         )}
