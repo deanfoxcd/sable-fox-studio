@@ -34,6 +34,7 @@ export default function RootLayout({
       >
         <head>
           <ThemeModeScript />
+          <meta name='viewport' content='width=device-width, initial-scale=1' />
         </head>
         <body
           className={`${cormorant.className} antialiase min-h-screen flex flex-col`}

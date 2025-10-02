@@ -10,7 +10,7 @@ import { customTheme } from '../styles/themes';
 const AboutAccordion = () => {
   return (
     <Accordion
-      className='mt-16 mx-50 mb-10'
+      className='mt-8 mb-10 max-w-xl mx-auto w-full px-2'
       theme={customTheme.accordion.root}
     >
       <AccordionPanel flush={true}>

@@ -8,7 +8,7 @@ const Masonary = dynamic(() => import('../_components/masonary'), {
 
 const Portfolio: React.FC = function () {
   return (
-    <div className='min-h-screen m-10'>
+    <div className='min-h-screen m-4 sm:m-6 md:m-10'>
       <Masonary />
     </div>
   );

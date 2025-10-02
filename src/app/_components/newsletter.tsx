@@ -28,7 +28,7 @@ const Newsletter: React.FC = function () {
   return (
     <section className='bg-transparent text-white mb-20'>
       <div className='mx-auto max-w-screen-xl lg:py-8 lg:px-2'>
-        <div className='mx-auto max-w-screen-md sm:text-center'>
+        <div className='mx-4 sm:mx-auto max-w-screen-md sm:text-center'>
           <h2 className='mb-6 text-3xl tracking-tight font-extrabold sm:text-4xl '>
             Join the studio newsletter
           </h2>
@@ -67,7 +67,7 @@ const Newsletter: React.FC = function () {
                   className={[inputStyle, 'w-full'].join(' ')}
                 />
               </div>
-              <div className='relative w-full'>
+              <div className='relative w-full flex justify-center'>
                 <label
                   htmlFor='email'
                   className='hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
@@ -76,7 +76,7 @@ const Newsletter: React.FC = function () {
                 </label>
 
                 <input
-                  className={[inputStyle, 'w-auto'].join(' ')}
+                  className={[inputStyle, 'max-w-xs w-full mx-auto'].join(' ')}
                   placeholder='Email address'
                   type='email'
                   name='email'

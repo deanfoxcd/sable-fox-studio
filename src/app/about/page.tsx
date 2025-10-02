@@ -4,16 +4,16 @@ import AboutAccordion from '../_components/aboutAccordion';
 const page: React.FC = function () {
   return (
     <div className='min-h-screen !bg-[#C2BFCB] !text-[var(--main-brown)]'>
-      <div className='flex justify-between mt-16'>
-        <div className='flex-1 '>
-          <p className='text-5xl font-light px-16 py-8'>
+      <div className='flex flex-col lg:flex-row justify-between mt-8 lg:mt-16'>
+        <div className='flex-1'>
+          <p className='text-3xl lg:text-5xl font-light px-4 py-4 lg:px-16 lg:py-8'>
             Welcome to my little studio! My name is Isabelle Fox, and I am the
             artist behind Sable Fox Studio. I am based in the foothills of the
             Smoky Mountains of Tennessee with my husband Dean, our little
             Shetland Sheepdog, Murphy, and our cat, Bob.
           </p>
           <hr className='ml-16 mr-180' />
-          <p className='px-16 py-8 text-3xl'>
+          <p className='px-4 py-4 text-lg lg:text-3xl lg:px-16 lg:py-8'>
             Growing up I always felt such a deep connection with animals, a love
             that inspired me to capture their essence through pigments on
             tattered paper and soft linen. Surrounded by the Grand Tetons in
@@ -28,12 +28,13 @@ const page: React.FC = function () {
             innocent expression of creativity that has marked me forever.{' '}
           </p>
         </div>
-        <div className='flex-1 relative'>
+        <div className='flex-1 relative min-h-[300px] h-72 lg:h-auto mt-6 lg:mt-0'>
           <Image
             src='/images/about-1.jpeg'
             alt='Belle'
             fill
-            className='object-cover'
+            className='object-cover rounded-lg'
+            sizes='(max-width: 1024px) 100vw, 50vw'
           />
         </div>
       </div>
@@ -42,7 +43,7 @@ const page: React.FC = function () {
         <AboutAccordion />
       </div>
 
-      <div className='text-[var(--main-brown)] mx-70 my-30 pb-20 text-4xl'>
+      <div className='text-[var(--main-brown)] mx-4 my-10 pb-10 text-xl lg:mx-70 lg:my-30 lg:pb-20 lg:text-4xl'>
         <p>
           <em>
             &quot;My art seeks to create a feeling from a familiar past, a
