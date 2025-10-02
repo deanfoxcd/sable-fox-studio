@@ -4,8 +4,8 @@ import AboutAccordion from '../_components/aboutAccordion';
 const page: React.FC = function () {
   return (
     <div className='min-h-screen !bg-[#C2BFCB] !text-[var(--main-brown)]'>
-      <div className='flex flex-col lg:flex-row justify-between mt-8 lg:mt-16'>
-        <div className='flex-1'>
+      <div className='flex flex-col xl:flex-row justify-between mt-8 xl:mt-16'>
+        <div className='w-full xl:flex-1'>
           <p className='text-3xl lg:text-5xl font-light px-4 py-4 lg:px-16 lg:py-8'>
             Welcome to my little studio! My name is Isabelle Fox, and I am the
             artist behind Sable Fox Studio. I am based in the foothills of the
@@ -28,7 +28,7 @@ const page: React.FC = function () {
             innocent expression of creativity that has marked me forever.{' '}
           </p>
         </div>
-        <div className='flex-1 relative min-h-[300px] h-72 lg:h-auto mt-6 lg:mt-0'>
+        <div className='w-full max-w-xs mx-auto aspect-[3/4] h-auto relative mt-6 xl:mt-0 xl:w-64 xl:aspect-[3/4] xl:h-auto xl:mx-0 xl:max-w-none'>
           <Image
             src='/images/about-1.jpeg'
             alt='Belle'
@@ -39,11 +39,11 @@ const page: React.FC = function () {
         </div>
       </div>
 
-      <div>
+      <div className='w-full max-w-2xl mx-auto px-4'>
         <AboutAccordion />
       </div>
 
-      <div className='text-[var(--main-brown)] mx-4 my-10 pb-10 text-xl lg:mx-70 lg:my-30 lg:pb-20 lg:text-4xl'>
+      <div className='text-[var(--main-brown)] my-10 pb-10 text-xl w-full max-w-3xl xl:max-w-5xl mx-auto px-4 lg:my-30 lg:pb-20 lg:text-4xl'>
         <p>
           <em>
             &quot;My art seeks to create a feeling from a familiar past, a
