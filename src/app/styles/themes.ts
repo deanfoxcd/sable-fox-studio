@@ -16,25 +16,18 @@ export const customTheme = createTheme({
       xl: 'h-[52px] px-6 text-base',
     },
     color: {
-      default:
-        'bg-primary-700 text-white hover:bg-primary-800 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800',
-      alternative:
-        'border !border-[var(--main-brown)] !bg-gray-300 !text-gray-900 hover:cursor-pointer hover:!bg-gray-200 !hover:text-[#3E4825] hover:ring-1 focus:ring-gray-100',
-      dark: 'bg-gray-800 text-white hover:bg-gray-900 focus:ring-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700',
-      light:
-        'border border-gray-300 bg-white text-gray-900 hover:bg-gray-100 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700',
+      default: 'bg-primary-700 text-white hover:bg-primary-800 focus:ring-primary-300',
+      alternative: 'border !border-[var(--main-brown)] !bg-gray-300 !text-gray-900 hover:cursor-pointer hover:!bg-gray-200 !hover:text-[#3E4825] hover:ring-1 focus:ring-gray-100',
+      light: 'border border-gray-300 bg-white text-gray-900 hover:bg-gray-100 focus:ring-gray-100',
     },
     outlineColor: {
-      default:
-        'border border-primary-700 text-primary-700 hover:border-primary-800 hover:bg-primary-800 hover:text-white focus:ring-primary-300 dark:border-primary-600 dark:text-primary-500 dark:hover:border-primary-700 dark:hover:bg-primary-700 dark:hover:text-white dark:focus:ring-primary-800',
-
-      dark: 'border border-gray-800 text-gray-800 hover:border-gray-900 hover:bg-gray-900 hover:text-white focus:ring-gray-300 dark:border-gray-600 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-800',
+      default: 'border border-primary-700 text-primary-700 hover:border-primary-800 hover:bg-primary-800 hover:text-white focus:ring-primary-300',
     },
   },
 
   navbar: {
     root: {
-      base: '!bg-transparent px-2 py-2.5 sm:px-4 dark:border-gray-70 flex',
+      base: '!bg-transparent px-2 py-2.5 sm:px-4 border-white flex',
       rounded: {
         on: 'rounded',
         off: '',
@@ -56,7 +49,7 @@ export const customTheme = createTheme({
     },
     collapse: {
       base: 'w-full md:block md:w-auto',
-      list: 'mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-12 md:text-lg md:font-medium',
+      list: 'mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-12 md:text-lg md:font-medium divide-white border-white',
       hidden: {
         on: 'hidden',
         off: '',
@@ -65,16 +58,16 @@ export const customTheme = createTheme({
     link: {
       base: 'block py-2 pl-3 pr-4 md:p-0 !text-white text-xl',
       active: {
-        on: 'text-xl md:bg-transparent dark:text-white underline',
-        off: 'border-b border-gray-100 text-gray-700 hover:bg-gray-50 md:border-0 md:hover:bg-transparent md:hover:text-primary-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent md:dark:hover:text-white',
+        on: 'text-xl md:bg-transparent text-white underline',
+        off: 'border-b border-white text-gray-700 hover:bg-gray-50 md:border-0 md:hover:bg-transparent md:hover:text-primary-700 text-gray-400 hover:text-white md:hover:bg-transparent md:hover:text-white',
       },
       disabled: {
-        on: 'text-gray-400 hover:cursor-not-allowed dark:text-gray-600',
+        on: 'text-gray-400 hover:cursor-not-allowed text-gray-600',
         off: '',
       },
     },
     toggle: {
-      base: 'inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600',
+      base: 'inline-flex items-center rounded-lg p-2 text-sm text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white md:hidden',
       icon: 'h-6 w-6 shrink-0',
       title: 'sr-only',
     },
@@ -82,7 +75,7 @@ export const customTheme = createTheme({
 
   accordion: {
     root: {
-      base: 'divide-y divide-gray-200 border-none dark:divide-gray-700 dark:border-gray-700',
+      base: 'divide-y divide-white border-none',
       flush: {
         off: '!border-none',
         on: '!border-none',
@@ -101,8 +94,8 @@ export const customTheme = createTheme({
       },
       base: 'flex w-full items-center justify-between p-5 text-left font-medium !bg-transparent !text-white !text-2xl',
       flush: {
-        off: 'hover:bg-gray-100 focus:ring-none focus:ring-0 dark:hover:bg-gray-800 dark:focus:ring-gray-800',
-        on: 'bg-transparent dark:bg-transparent',
+        off: 'hover:bg-gray-100 focus:ring-none focus:ring-0 hover:bg-gray-800 focus:ring-gray-800',
+        on: 'bg-transparent bg-transparent',
       },
       heading: '!focus:ring-none !focus:ring-offset-0',
       open: {

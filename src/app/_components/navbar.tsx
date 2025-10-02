@@ -20,6 +20,7 @@ const NavbarComponent: React.FC = function () {
         rounded
         fluid
         theme={customTheme.navbar}
+        className='divide-white border-white'
       >
         <div className='flex flex-col items-center w-full'>
           <NavbarToggle className='text-white' />

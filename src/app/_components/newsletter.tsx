@@ -70,7 +70,7 @@ const Newsletter: React.FC = function () {
               <div className='relative w-full flex justify-center'>
                 <label
                   htmlFor='email'
-                  className='hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+                  className='hidden mb-2 text-sm font-medium text-gray-900 text-gray-300'
                 >
                   Email address
                 </label>

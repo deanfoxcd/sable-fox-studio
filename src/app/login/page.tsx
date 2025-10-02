@@ -32,7 +32,7 @@ const Login: React.FC = async function () {
                 <div>
                   <label
                     htmlFor='email'
-                    className='block mb-2 text-xl font-medium text-white dark:text-white'
+                    className='block mb-2 text-xl font-medium text-white text-white'
                   >
                     Email
                   </label>
@@ -47,7 +47,7 @@ const Login: React.FC = async function () {
                 <div>
                   <label
                     htmlFor='password'
-                    className='block mb-2 text-xl font-medium text-white dark:text-white'
+                    className='block mb-2 text-xl font-medium text-white text-white'
                   >
                     Password
                   </label>
@@ -62,7 +62,7 @@ const Login: React.FC = async function () {
                 <div className='flex items-center justify-between'>
                   <a
                     href='#'
-                    className='text-sm font-medium text-white hover:underline dark:text-white'
+                    className='text-sm font-medium text-white hover:underline text-white'
                   >
                     Forgot password?
                   </a>
