@@ -13,9 +13,36 @@
   --color-foreground: var(--foreground);
 }
 
-
 body {
   background: var(--background);
   color: var(--foreground);
   border: var(--main-brown);
 }
+
+/* Force About accordion to always be transparent with white text/dividers in dark mode */
+/* .dark .accordion,
+.dark .accordion > *,
+.dark .accordion-content,
+.dark .accordion-title {
+  background: transparent !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+/* Prevent accordion title hover from changing to dark grey */
+/* Stronger override for accordion title hover */
+/* .accordion-title:hover,
+.dark .accordion-title:hover,
+.accordion .accordion-title:hover,
+.dark .accordion .accordion-title:hover,
+.accordion-title[aria-expanded='true']:hover,
+.dark .accordion-title[aria-expanded='true']:hover {
+  background: transparent !important;
+} */
+
+/* Ultimate override for any accordion title hover background */
+/* [class*='accordion-title']:hover,
+.dark [class*='accordion-title']:hover,
+[class*='accordion-title'][aria-expanded='true']:hover,
+.dark [class*='accordion-title'][aria-expanded='true']:hover {
+  background: transparent !important;
+} */

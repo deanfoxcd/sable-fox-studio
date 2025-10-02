@@ -23,7 +23,7 @@ const ProductCard: React.FC<ProductsCardProps> = function ({
   onCartUpdate,
 }) {
   return (
-    <div className='text-black text-white shadow-2xl shadow-black'>
+    <div className='text-white shadow-2xl shadow-black'>
       <Card className='w-[350px] min-h-[420px] flex flex-col justify-between shadow-2xl overflow-hidden bg-[hsl(56,12%,65%)] border-none'>
         <Link
           href={`/shop/${product.id}`}
@@ -57,7 +57,7 @@ const ProductCard: React.FC<ProductsCardProps> = function ({
         </div>
 
         <div className='flex flex-col items-center'>
-          <span className='text-3xl font-bold text-gray-900 text-white'>
+          <span className='text-3xl font-bold text-white'>
             ${product.price}
           </span>
 

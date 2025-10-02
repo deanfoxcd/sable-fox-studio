@@ -11,8 +11,8 @@ const PortfolioCard = ({
   onImageClick: (imageName: string) => void;
 }) => {
   return (
-    <div className='text-black text-white'>
-      <Card className='w-full max-w-[350px] mx-auto flex flex-col justify-between shadow-2xl overflow-hidden bg-[hsl(56,12%,65%)] border-none p-2'>
+    <div className='text-white'>
+      <Card className='w-full max-w-[350px] mx-auto flex flex-col justify-between shadow-2xl overflow-hidden !bg-[hsl(56,12%,65%)] border-none p-2'>
         <div className='block w-full h-full'>
           <div className='w-full cursor-pointer'>
             <Image

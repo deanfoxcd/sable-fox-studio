@@ -16,12 +16,16 @@ export const customTheme = createTheme({
       xl: 'h-[52px] px-6 text-base',
     },
     color: {
-      default: 'bg-primary-700 text-white hover:bg-primary-800 focus:ring-primary-300',
-      alternative: 'border !border-[var(--main-brown)] !bg-gray-300 !text-gray-900 hover:cursor-pointer hover:!bg-gray-200 !hover:text-[#3E4825] hover:ring-1 focus:ring-gray-100',
-      light: 'border border-gray-300 bg-white text-gray-900 hover:bg-gray-100 focus:ring-gray-100',
+      default:
+        'bg-primary-700 text-white hover:bg-primary-800 focus:ring-primary-300',
+      alternative:
+        'border !border-[var(--main-brown)] !bg-gray-300 !text-gray-900 hover:cursor-pointer hover:!bg-gray-200 !hover:text-[#3E4825] hover:ring-1 focus:ring-gray-100',
+      light:
+        'border border-gray-300 bg-white text-gray-900 hover:bg-gray-100 focus:ring-gray-100',
     },
     outlineColor: {
-      default: 'border border-primary-700 text-primary-700 hover:border-primary-800 hover:bg-primary-800 hover:text-white focus:ring-primary-300',
+      default:
+        'border border-primary-700 text-primary-700 hover:border-primary-800 hover:bg-primary-800 hover:text-white focus:ring-primary-300',
     },
   },
 
@@ -48,8 +52,8 @@ export const customTheme = createTheme({
       base: 'flex items-center',
     },
     collapse: {
-      base: 'w-full md:block md:w-auto',
-      list: 'mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-12 md:text-lg md:font-medium divide-white border-white',
+      base: 'w-full md:block md:w-auto !bg-transparent !text-white',
+      list: 'mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-12 md:text-lg md:font-medium divide-white border-white !divide-white !border-white',
       hidden: {
         on: 'hidden',
         off: '',
@@ -67,7 +71,7 @@ export const customTheme = createTheme({
       },
     },
     toggle: {
-      base: 'inline-flex items-center rounded-lg p-2 text-sm text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white md:hidden',
+      base: 'inline-flex items-center rounded-lg p-2 text-sm text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white md:hidden divide-white',
       icon: 'h-6 w-6 shrink-0',
       title: 'sr-only',
     },
@@ -75,24 +79,24 @@ export const customTheme = createTheme({
 
   accordion: {
     root: {
-      base: 'divide-y divide-white border-none',
+      base: 'divide-y divide-white border-none bg-transparent',
       flush: {
         off: '!border-none',
         on: '!border-none',
       },
     },
     content: {
-      base: 'p-5 text-white !text-xl',
+      base: 'p-5 !bg-transparent !text-white text-xl',
     },
     title: {
       arrow: {
         base: 'h-6 w-6 shrink-0',
         open: {
-          off: 'bg-transparent',
+          off: '!bg-transparent',
           on: 'rotate-180',
         },
       },
-      base: 'flex w-full items-center justify-between p-5 text-left font-medium !bg-transparent !text-white !text-2xl',
+      base: 'flex w-full items-center justify-between p-5 text-left font-medium !bg-transparent !text-white text-2xl',
       flush: {
         off: 'hover:bg-gray-100 focus:ring-none focus:ring-0 hover:bg-gray-800 focus:ring-gray-800',
         on: 'bg-transparent bg-transparent',

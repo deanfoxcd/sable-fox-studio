@@ -30,7 +30,7 @@ const QuantityPicker: React.FC<QuantityPickerProps> = function ({
     <form className='max-w-xs mx-auto'>
       <label
         htmlFor='quantity-input'
-        className='block mb-2 text-sm font-medium text-gray-900 text-white'
+        className='block mb-2 text-sm font-medium text-white'
       ></label>
       <div className='relative flex items-center max-w-[8rem]'>
         <button
