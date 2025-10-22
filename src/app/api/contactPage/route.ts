@@ -2,7 +2,27 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
-  const { firstName, lastName, email, subject, message } = await req.json();
+  const body = await req.json();
+  const { name, email, message, recaptchaToken } = body;
+
+  // Verify reCAPTCHA token directly with Google API
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+  const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaToken}`;
+  try {
+    const response = await fetch(verificationUrl, { method: 'POST' });
+    const data = await response.json();
+    if (!data.success) {
+      return NextResponse.json(
+        { message: 'reCAPTCHA verification failed' },
+        { status: 400 }
+      );
+    }
+  } catch (error) {
+    return NextResponse.json(
+      { message: 'reCAPTCHA verification error' },
+      { status: 500 }
+    );
+  }
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -15,8 +35,8 @@ export async function POST(req: Request) {
   const mailOptions = {
     from: email,
     to: process.env.GMAIL_USER,
-    subject: `New Contact Form Submission from ${firstName}`,
-    text: `Name: ${firstName} ${lastName}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`,
+    subject: `New Contact Form Submission from ${name}`,
+    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
   };
 
   try {
